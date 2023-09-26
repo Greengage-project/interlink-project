@@ -300,6 +300,8 @@ services:
       timeout: 10s
       retries: 3
       # start_period: 20s
+    ports: # TEMP - WIP
+      - "27017:27017" # TEMP - WIP
     networks:
       - grafana-network
       - traefik-public
@@ -1114,7 +1116,7 @@ services:
       - "traefik.http.routers.portainer.tls=true"
       - "traefik.http.services.portainer.loadbalancer.server.port=9000"
       - "traefik.http.middlewares.portainer-stripprefix.stripprefix.prefixes=/portainer"
-      
+
     logging:
       driver: "json-file"
       options:

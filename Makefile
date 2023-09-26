@@ -55,6 +55,7 @@ down: ## Stops all containers and removes volumes
 	# gamification
 	cd ../interlink-gamification && make down
 	
+	cd ../intergamification && make down
 	cd ./envs/local && docker-compose down --remove-orphans
 	docker network rm traefik-public || true
 
@@ -67,6 +68,7 @@ start: down net ## Run containers (restarts them if already running)
 	cd ../backend-catalogue && make integrated
 	cd ../backend-coproduction && make integrated
 	cd ../backend-logging && make integrated
+	
 
 	# interlinkers
 	cd ../interlinker-ceditor && make integrated
@@ -79,6 +81,7 @@ start: down net ## Run containers (restarts them if already running)
 
 	# Most of the times we only want to restart backend components because frontend lasts a lot to start in dev mode
 	cd ../frontend && make integrated
+	cd ../intergamification && make integrated
 
 .PHONY: pull
 pull: down ## Pulls all components
