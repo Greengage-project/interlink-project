@@ -1114,7 +1114,7 @@ services:
       - "traefik.http.routers.portainer.tls=true"
       - "traefik.http.services.portainer.loadbalancer.server.port=9000"
       - "traefik.http.middlewares.portainer-stripprefix.stripprefix.prefixes=/portainer"
-      
+
     logging:
       driver: "json-file"
       options:
@@ -1176,11 +1176,140 @@ services:
       options:
         tag: "{{.ImageName}}|{{.Name}}|{{.ImageFullID}}|{{.FullID}}"
 
+  ckan:
+    container_name: ckan
+    build:
+      context: ckan/
+      dockerfile: Dockerfile
+      args:
+        - TZ=${TZ}
+    env_file:
+      - .env
+    networks:
+      - traefik-public
+      - ckannet
+      - dbnet
+      - solrnet
+      - redisnet
+    ports:
+      - "5000:5000"
+    depends_on:
+      - ckandb
+      - solr
+      - redisckan
+    volumes:
+      - ckan_storage:/var/lib/ckan
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-public
+      - traefik.http.routers.${STACK_NAME?Variable not set}-ckan-http.rule=Host(`ckan.${DOMAIN?Variable not set}`)
+      - traefik.http.services.${STACK_NAME?Variable not set}-ckan.loadbalancer.server.port=5000
+      - traefik.http.routers.${STACK_NAME?Variable not set}-ckan-http.middlewares=ckan-stripprefix
+      - traefik.http.middlewares.ckan-stripprefix.stripprefix.prefixes=/ckan
+    logging:
+      driver: "json-file"
+      options:
+        tag: "{{.ImageName}}|{{.Name}}|{{.ImageFullID}}|{{.FullID}}"
+
+  datapusher:
+    container_name: datapusher
+    env_file:
+      - .env
+    networks:
+      - ckannet
+      - dbnet
+    image: ckan/ckan-base-datapusher:0.0.20
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO", "/dev/null", "http://datapusher:8800"]
+    ports:
+      - "8800:8800"
+
+  ckandb:
+    container_name: ckandb
+    build:
+      context: postgresql/
+    networks:
+      - dbnet
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER_CKAN_DB}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD_CKAN_DB}
+      - POSTGRES_DB=${POSTGRES_DB_CKAN}
+      - CKAN_DB_USER=${CKAN_DB_USER}
+      - CKAN_DB_PASSWORD=${CKAN_DB_PASSWORD}
+      - CKAN_DB=${CKAN_DB}
+      - DATASTORE_READONLY_USER=${DATASTORE_READONLY_USER}
+      - DATASTORE_READONLY_PASSWORD=${DATASTORE_READONLY_PASSWORD}
+      - DATASTORE_DB=${DATASTORE_DB}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "pg_isready",
+          "-U",
+          "${POSTGRES_USER_CKAN_DB}",
+          "-d",
+          "${POSTGRES_PASSWORD_CKAN_DB}",
+        ]
+
+  solr:
+    container_name: solr
+    networks:
+      - solrnet
+    image: ckan/ckan-solr:2.10-solr9
+    volumes:
+      - solr_data:/var/solr
+    restart: unless-stopped
+    env_file:
+      - .env
+
+    ports:
+      - "8983:8983"
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-public
+      - traefik.http.routers.${STACK_NAME?Variable not set}-solr-http.rule=Host(`solr.${DOMAIN?Variable not set}`)
+      - traefik.http.services.${STACK_NAME?Variable not set}-solr.loadbalancer.server.port=8983
+      - traefik.http.routers.${STACK_NAME?Variable not set}-solr-http.middlewares=solr-stripprefix
+      - traefik.http.middlewares.solr-stripprefix.stripprefix.prefixes=/solr
+    logging:
+      driver: "json-file"
+      options:
+        tag: "{{.ImageName}}|{{.Name}}|{{.ImageFullID}}|{{.FullID}}"
+
+  redisckan:
+    container_name: redisckan
+    image: redis:6
+    env_file:
+      - .env
+    networks:
+      - redisnet
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "-e", "QUIT"]
+    ports:
+      - "6379:6379"
+
 networks:
   traefik-public:
     external: true
   grafana-network:
     external: true
+  ckannet:
+  solrnet:
+    internal: true
+  dbnet:
+    internal: true
+  redisnet:
+    internal: true
 
 volumes:
   matomo-data:
@@ -1214,3 +1343,6 @@ volumes:
   gamification-engine-data:
   keycloak-db-data:
   keycloak-data:
+  ckan_storage:
+  pg_data:
+  solr_data:
