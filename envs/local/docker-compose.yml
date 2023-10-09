@@ -309,9 +309,12 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik-public
-      - traefik.http.routers.${STACK_NAME?Variable not set}-ckan-http.rule=Host(`ckan.${DOMAIN?Variable not set}`)
-      - traefik.http.services.${STACK_NAME?Variable not set}-ckan.loadbalancer.server.port=5000
-      - traefik.http.routers.${STACK_NAME?Variable not set}-ckan-http.middlewares=ckan-stripprefix
+      - traefik.http.routers.${PLATFORM_STACK_NAME?Variable not set}-ckan.entrypoints=websecure
+      - traefik.http.routers.${PLATFORM_STACK_NAME?Variable not set}-ckan.tls.certresolver=letsencrypt
+      - traefik.http.routers.${PLATFORM_STACK_NAME?Variable not set}-ckan.tls=true
+      - traefik.http.services.${PLATFORM_STACK_NAME?Variable not set}-ckan.loadbalancer.server.port=5000
+      - traefik.http.routers.${PLATFORM_STACK_NAME?Variable not set}-ckan.rule=Host(`${DOMAIN?Variable not set}`) && PathPrefix(`/ckan`)
+      - traefik.http.routers.${PLATFORM_STACK_NAME?Variable not set}-ckan.middlewares=ckan-stripprefix
       - traefik.http.middlewares.ckan-stripprefix.stripprefix.prefixes=/ckan
     logging:
       driver: "json-file"

@@ -60,6 +60,7 @@ down: ## Stops all containers and removes volumes
 
 .PHONY: start
 start: down net ## Run containers (restarts them if already running)
+	bash load_envs_demo.sh # load envs
 	cd ./envs/local && docker-compose up -d
 
 	# platform components
