@@ -1300,6 +1300,132 @@ services:
       test: ["CMD", "redis-cli", "-e", "QUIT"]
     ports:
       - "6379:6379"
+  
+  # Druid
+  druid_db:
+    container_name: druid_postgres
+    image: postgres:16
+    ports:
+      - 5435:5432
+    volumes:
+      - metadata_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    networks:
+      - druid
+
+  # Need 3.5 or later for container nodes
+  druid_zookeeper:
+    container_name: zookeeper
+    image: zookeeper:3.9.0
+    ports:
+      - 2181:2181
+    env_file:
+      - .env
+    networks:
+      - druid
+
+  druid_coordinator:
+    image: apache/druid:27.0.0
+    container_name: coordinator
+    volumes:
+      - druid_shared:/opt/shared
+      - coordinator_var:/opt/druid/var
+    depends_on:
+      - druid_zookeeper
+      - druid_db
+    ports:
+      - 8081:8081
+    command:
+      - coordinator
+    env_file:
+      - .env
+    networks:
+      - druid
+
+  druid_broker:
+    image: apache/druid:27.0.0
+    container_name: broker
+    volumes:
+      - broker_var:/opt/druid/var
+    depends_on:
+      - druid_zookeeper
+      - druid_db
+      - druid_coordinator
+    ports:
+      - 8082:8082
+    command:
+      - broker
+    env_file:
+      - .env
+    networks:
+      - druid
+
+  druid_historical:
+    image: apache/druid:27.0.0
+    container_name: historical
+    volumes:
+      - druid_shared:/opt/shared
+      - historical_var:/opt/druid/var
+    depends_on: 
+      - druid_zookeeper
+      - druid_db
+      - druid_coordinator
+    ports:
+      - 8083:8083
+    command:
+      - historical
+    env_file:
+      - .env
+    networks:
+      - druid
+
+  druid_middlemanager:
+    image: apache/druid:27.0.0
+    container_name: middlemanager
+    volumes:
+      - druid_shared:/opt/shared
+      - middle_var:/opt/druid/var
+    depends_on: 
+      - druid_zookeeper
+      - druid_db
+      - druid_coordinator
+    ports:
+      - 8091:8091
+      - 8100-8105:8100-8105
+    command:
+      - middleManager
+    env_file:
+      - .env
+    networks:
+      - druid
+
+  druid_router:
+    image: apache/druid:27.0.0
+    container_name: router
+    volumes:
+      - router_var:/opt/druid/var
+    depends_on:
+      - druid_zookeeper
+      - druid_db
+      - druid_coordinator
+    ports:
+      - 8888:8888
+    command:
+      - router
+    env_file:
+      - .env
+    networks:
+      - traefik-public
+      - druid
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-public"
+      - "traefik.http.routers.druid.entrypoints=websecure"
+      - "traefik.http.routers.druid.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.druid.tls=true"
+      - "traefik.http.services.druid.loadbalancer.server.port=8888"
+      - "traefik.http.routers.druid.rule=Host(`druid.13.50.150.58.nip.io`)"
 
 networks:
   traefik-public:
@@ -1312,6 +1438,8 @@ networks:
   dbnet:
     internal: true
   redisnet:
+    internal: true
+  druid:
     internal: true
 
 volumes:
@@ -1349,3 +1477,11 @@ volumes:
   ckan_storage:
   pg_data:
   solr_data:
+  # Druid
+  metadata_data: 
+  middle_var: 
+  historical_var: 
+  broker_var: 
+  coordinator_var: 
+  router_var: 
+  druid_shared: 
