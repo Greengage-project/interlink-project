@@ -1,5 +1,5 @@
 {
-    "$id": "http://example.com/example.json", // replace with your URL
+    "$id": "https://github.com/Greengage-project/interlink-project/blob/master/greengage_academy_jsonschema.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "GREENGAGE Academy resources",
     "type": "object",
