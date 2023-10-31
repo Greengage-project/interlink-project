@@ -4,59 +4,138 @@
     "title": "GREENGAGE Academy resources",
     "type": "object",
     "properties": {
-        "abstract": {
-            "description": "Abstract of the resource. EUcitizen",
+        "id": {
+            "description": "ID of the resource.",
             "type": "string"
         },
-        "administrative_scopes": {
-            "description": "The scope where the resource is implemented. KNOWLEDGE-SOFTWARE-EXTERNALKNOWLEDGE",
-            "type": "array",
-            "items": {
-                "type": "string",
-                "enum": [
-                    "eu",
-                    "national",
-                    "local"
-                ]
-            }
+        "name": {
+            "description": "Name of the resource.",
+            "type": "string"
         },
-        "asset_name_translations": {
-            "description": "Name of the asset in the different translations. SOFTWARE-EXTERNALSOFTWARE",
-            "type": "object",
-            "items": {
-                "$ref": "#/$defs/languages"
-            }
-        },
-        "audience": {
-            "description": "Audience of the resource. EUcitizen",
-            "type": "string",
-            "enum": [
-                "Research & Academics",
-                "Educators",
-                "Community Members & Citizens",
-                "CS Project Leaders & Initiators",
-                "CSOs & NGOs",
-                "Policy & Decision Makers",
-                "ALL Audiences"
-            ]
-        },
-        "authors": {
-            "description": "Authors of the resource. First initial + surname. EUcitizen",
+        "keywords": {
+            "description": "Keywords of the resource. EUcitizen",
             "type": "array",
             "items": {
                 "type": "string"
             }
         },
-        "constraints_and_limitations_translations": {
-            "description": "Constraints and limitations of the resources in the different translations. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
-            "type": "object",
+        "url": {
+            "description": "URL of the resource.",
+            "type": "uri-reference"
+        },
+        "abstract": {
+            "description": "Abstract of the resource.",
+            "type": "string",
+            "maxLength": 3000
+        },
+        "audience": {
+            "description": "Audience of the resource.",
+            "type": "array",
             "items": {
-                "$ref": "#/$defs/languages"
+                "$ref": "#/$defs/Audiences"
             }
         },
+        "authors": {
+            "description": "Authors of the resource. Initial + surname",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "citizen_science_description": {
+            "description": "Description of the citizen science aspect of the resource.",
+            "type": "string"
+        },
         "category": {
-            "description": "Category of the resource. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
+            "description": "Category of the resource.",
             "type": "string",
+            "$ref": "#/$defs/Categories"
+        },
+        "publisher": {
+            "description": "Publisher of the resource.",
+            "type": "string"
+        },
+        "publication_year": {
+            "description": "Publication year of the resource.",
+            "type": "date"
+        },
+        "license": {
+            "description": "License of the resource.",
+            "type": "string"
+        },
+        "doi": {
+            "description": "DOI of the resource.",
+            "type": "string"
+        },
+        "language": {
+            "description": "Language of the resource.",
+            "type": "string",
+            "$ref": "#/$defs/Languages"
+        },
+        "problemprofiles": {
+            "description": "Problem profiles that the resource tackles.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "format": {
+            "description": "Format of the resource.",
+            "$ref": "#/$defs/Formats"
+        },
+        "logotype": {
+            "description": "Logotype of the resource.",
+            "type": "uri-reference"
+        },
+        "nature": {
+            "description": "Nature of the resource.",
+            "type": "string",
+            "$ref": "#/$defs/Natures"
+        },
+        "instructions": {
+            "description": "Instructions of the resource.",
+            "type": "string"
+        }
+        
+    },
+    "if": {
+        "properties": {
+            "nature": {
+                "const": "knowledge"
+            }
+        }
+    },
+    "then": {
+        "properties": {
+            "software_interlinker": {
+                "description": "Software interlinker of the resource.",
+                "type": "string",
+                "$ref": "#/$defs/SoftwareInterlinkers"
+            }
+        }
+    },
+    "$defs": {
+        "Languages": {
+            "default": "en",
+            "enum": [
+                "en",
+                "es",
+                "it",
+                "nl"
+            ]
+        },
+        "Audiences": {
+            "enum": [
+                "Community Members & Citizens",
+                "CS Project Leaders & Initiators",
+                "CSOs & NGOs",
+                "Educators",
+                "Policy & Decision Makers",
+                "Research & Academics",
+                "ALL Audiences"
+            ]
+        },
+        "Categories": {
             "enum": [
                 "Collection",
                 "Dataset",
@@ -72,302 +151,28 @@
                 "Still Image"
             ]
         },
-        "description_translations": {
-            "description": "Description of the resources in the different translations. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
-            "type": "object",
-            "items": {
-                "$ref": "#/$defs/languages"
-            }
-        },
-        "difficulty": {
-            "description": "Difficulty of the resource. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
-            "type": "string"
-        },
-        "doi": {
-            "description": "DOI of the resource. EUcitizen",
-            "type": "string"
-        },
-        "domain": {
-            "description": "???. KNOWLEDGE",
-            "type": "string"
-        },
-        "environments": {
-            "description": "The environment that will include the resource. KNOWLEDGE-SOFTWARE-EXTERNALKNOWLEDGE",
-            "type": "array",
-            "items": {
-                "type": "string",
-                "enum": [
-                    "demo",
-                    "prod"
-                ]
-            }
-        },
-        "file_translations": {
-            "description": "Path to the files in different translations. KNOWLEDGE",
-            "type": "object",
-            "items": {
-                "$ref": "#/$defs/languages"
-            }
-        },
-        "form": {
-            "description": "???. KNOWLEDGE-SOFTWARE",
-            "type": "string"
-        },
-        "format": {
-            "description": "???. KNOWLEDGE-SOFTWARE",
-            "type": "string"
-        },
-        "id": {
-            "description": "Id of the resource. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
-            "type": "string"
-        },
-        "instructions_translations": {
-            "description": "Path to the instruction files in the different translations. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
-            "type": "object",
-            "items": {
-                "$ref": "#/$defs/languages"
-            }
-        },
-        "integration": {
-            "description": "Details for the integration into the CE. EXTERNALKNOWLEDGE",
-            "type": "object",
-            "properties": {
-                "api_path": {
-                    "description": "Path to the API.",
-                    "type": "string"
-                },
-                "auth_method": {
-                    "description": "Authentication method.",
-                    "type": "string"
-                },
-                "capabilities": {
-                    "type": "object",
-                    "properties": {
-                        "clone": {
-                            "type": "boolean"
-                        },
-                        "delete": {
-                            "type": "boolean"
-                        },
-                        "edit": {
-                            "type": "boolean"
-                        },
-                        "instantiate": {
-                            "type": "boolean"
-                        },
-                        "open_in_modal": {
-                            "type": "boolean"
-                        },
-                        "preview": {
-                            "type": "boolean"
-                        },
-                        "shortcut": {
-                            "type": "boolean"
-                        },
-                        "view": {
-                            "type": "boolean"
-                        }
-                    }
-                },
-                "capabilities_translations": {
-                    "type": "object",
-                    "properties": {
-                        "delete_text_translations": {
-                            "type": "object",
-                            "items": {
-                                "$ref": "#/$defs/languages"
-                            }
-                        },
-                        "instantiate_text_translations": {
-                            "type": "object",
-                            "items": {
-                                "$ref": "#/$defs/languages"
-                            }
-                        },
-                        "view_text_translations": {
-                            "type": "object",
-                            "items": {
-                                "$ref": "#/$defs/languages"
-                            }
-                        }
-                    },
-                    "required": [
-                        "delete_text_translations",
-                        "instantiate_text_translations",
-                        "view_text_translations"
-                    ]
-                },
-                "domain": {
-                    "type": "string"
-                },
-                "is_subdomain": {
-                    "type": "boolean"
-                },
-                "path": {
-                    "type": "string"
-                },
-                "service_name": {
-                    "type": "string"
-                }
-            }
-        },
-        "is_responsive": {
-            "description": "Field to indicate if the resource is responsive. EXTERNALKNOWLEDGE",
-            "type": "boolean"
-        },
-        "is_sustainability_related": {
-            "description": "Field to indicate if the resource is related to sustainability. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
-            "type": "boolean"
-        },
-        "keywords": {
-            "description": "Keywords of the resource. EUcitizen",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "languages": {
-            "description": "Languages of the resource. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
-            "type": "array",
-            "items": {
-                "type": "string",
-                "enum": [
-                    "en",
-                    "es",
-                    "lv",
-                    "it"
-                ]
-            }
-        },
-        "licence": {
-            "description": "Licence of the resource. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
-            "type": "string"
-        },
-        "logotype": {
-            "description": "Path to the logotype of the resource. EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
-            "type": "string"
-        },
-        "name_translations": {
-            "description": "Name of the resource in the different translations. KNOWLEDGE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
-            "type": "object",
-            "items": {
-                "$ref": "#/$defs/languages"
-            }
-        },
-        "overview_text": {
-            "description": "Overview text of the resource. EXTERNALKNOWLEDGE",
-            "type": "object",
-            "items": {
-                "$ref": "#/$defs/languages"
-            }
-        },
-        "problemprofiles": {
-            "description": "Related problem profiles. KNOWLEDGE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "process": {
-            "description": "???",
-            "type": "string"
-        },
-        "publisher": {
-            "description": "Publisher of the resource. EUcitizen",
-            "type": "string"
-        },
-        "regulations_and_standards_translations": {
-            "description": "Regulations and standards of the resources in the different translations. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
-            "type": "object",
-            "items": {
-                "$ref": "#/$defs/languages"
-            }
-        },
-        "snapshots_url": {
-            "description": "URL of the snapshots of the resource. EUcitizen",
-            "type": "string"
-        },
-        "softwareinterlinker": {
-            "description": "Related software interlinker. KNOWLEDGE",
-            "type": "string"
-        },
-        "supported_by": {
-            "description": "???. EXTERNALKNOWLEDGE",
-            "type": "array",
-            "items": [
-                {
-                    "type": "string"
-                }
-            ]
-        },
-        "supports_internationalization": {
-            "description": "Field to indicate if the resource supports internationalization. EXTERNALKNOWLEDGE",
-            "type": "boolean"
-        },
-        "tags_translations": {
-            "description": "Tags of the resource in the different translations. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
-            "type": "object",
-            "items": {
-                "$ref": "#/$defs/languages"
-            }
-        },
-        "targets": {
-            "description": "Related targets. KNOWLEDGE-SOFTWARE-EXTERNALKNOWLEDGE",
-            "type": "array",
-            "items": [
-                {
-                    "type": "string"
-                }
-            ]
-        },
-        "type": {
-            "description": "Type of the resource. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
-            "type": "string",
+        "Formats": {
             "enum": [
-                "Software",
-                "Externalsoftware",
-                "Knowledge",
-                "Externalknowledge"
+                "pdf",
+                "editable_source_document",
+                "open_document",
+                "structured_format",
+                "sofware"
             ]
         },
-        "types": {
-            "description": "Functionality of the interlinker. KNOWLEDGE-SOFTWARE-EXTERNALKNOWLEDGE",
-            "type": "array",
-            "items": [
-                {
-                    "type": "string"
-                }
+        "Natures": {
+            "enum": [
+                "software",
+                "knowledge"
             ]
         },
-        "uri_translations": {
-            "description": "URI of the resource in the different translations. SOFTWARE-EXTERNALSOFTWARE",
-            "type": "object",
-            "items": {
-                "$ref": "#/$defs/languages"
-            }
-        },
-        "publication_year": {
-            "description": "Publication year of the resource. EUcitizen",
-            "type": "date"
-        }
-    },
-    "$defs": {
-        "languages": {
-            "type": "object",
-            "properties": {
-                "en": {
-                    "type": "string"
-                },
-                "es": {
-                    "type": "string"
-                },
-                "lv": {
-                    "type": "string"
-                },
-                "it": {
-                    "type": "string"
-                }
-            }
+        "SoftwareInterlinkers": {
+            "enum": [
+                "googledrive",
+                "surveyeditor",
+                "ceditor",
+                "externalresourcemanager"
+            ]
         }
     }
 }
