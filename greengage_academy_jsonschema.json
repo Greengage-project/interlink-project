@@ -4,8 +4,12 @@
     "title": "GREENGAGE Academy resources",
     "type": "object",
     "properties": {
+        "abstract": {
+            "description": "Abstract of the resource. EUcitizen",
+            "type": "string"
+        },
         "administrative_scopes": {
-            "description": "The scope where the resoruce is implemented. KNOWLEDGE-SOFTWARE-EXTERNALKNOWLEDGE",
+            "description": "The scope where the resource is implemented. KNOWLEDGE-SOFTWARE-EXTERNALKNOWLEDGE",
             "type": "array",
             "items": {
                 "type": "string",
@@ -23,12 +27,50 @@
                 "$ref": "#/$defs/languages"
             }
         },
+        "audience": {
+            "description": "Audience of the resource. EUcitizen",
+            "type": "string",
+            "enum": [
+                "Research & Academics",
+                "Educators",
+                "Community Members & Citizens",
+                "CS Project Leaders & Initiators",
+                "CSOs & NGOs",
+                "Policy & Decision Makers",
+                "ALL Audiences"
+            ]
+        },
+        "authors": {
+            "description": "Authors of the resource. First initial + surname. EUcitizen",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
         "constraints_and_limitations_translations": {
             "description": "Constraints and limitations of the resources in the different translations. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
             "type": "object",
             "items": {
                 "$ref": "#/$defs/languages"
             }
+        },
+        "category": {
+            "description": "Category of the resource. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
+            "type": "string",
+            "enum": [
+                "Collection",
+                "Dataset",
+                "Event",
+                "Image",
+                "Text",
+                "Interactive Resource (Website)",
+                "Physical Object (Hardware)",
+                "Moving Image (Video)",
+                "Service",
+                "Software",
+                "Sound",
+                "Still Image"
+            ]
         },
         "description_translations": {
             "description": "Description of the resources in the different translations. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
@@ -38,7 +80,11 @@
             }
         },
         "difficulty": {
-            "des+cription": "Difficulty of the resource. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
+            "description": "Difficulty of the resource. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
+            "type": "string"
+        },
+        "doi": {
+            "description": "DOI of the resource. EUcitizen",
             "type": "string"
         },
         "domain": {
@@ -173,6 +219,13 @@
             "description": "Field to indicate if the resource is related to sustainability. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
             "type": "boolean"
         },
+        "keywords": {
+            "description": "Keywords of the resource. EUcitizen",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
         "languages": {
             "description": "Languages of the resource. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
             "type": "array",
@@ -219,12 +272,20 @@
             "description": "???",
             "type": "string"
         },
+        "publisher": {
+            "description": "Publisher of the resource. EUcitizen",
+            "type": "string"
+        },
         "regulations_and_standards_translations": {
             "description": "Regulations and standards of the resources in the different translations. KNOWLEDGE-SOFTWARE-EXTERNALSOFTWARE-EXTERNALKNOWLEDGE",
             "type": "object",
             "items": {
                 "$ref": "#/$defs/languages"
             }
+        },
+        "snapshots_url": {
+            "description": "URL of the snapshots of the resource. EUcitizen",
+            "type": "string"
         },
         "softwareinterlinker": {
             "description": "Related software interlinker. KNOWLEDGE",
@@ -284,6 +345,10 @@
             "items": {
                 "$ref": "#/$defs/languages"
             }
+        },
+        "publication_year": {
+            "description": "Publication year of the resource. EUcitizen",
+            "type": "date"
         }
     },
     "$defs": {
