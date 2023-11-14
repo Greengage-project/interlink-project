@@ -4,27 +4,8 @@
     "title": "GREENGAGE Academy resources",
     "type": "object",
     "properties": {
-        "id": {
-            "description": "ID of the resource.",
-            "type": "string"
-        },
-        "name": {
-            "description": "Name of the resource.",
-            "type": "string"
-        },
-        "keywords": {
-            "description": "Keywords of the resource. EUcitizen",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "url": {
-            "description": "URL of the resource.",
-            "type": "uri-reference"
-        },
         "abstract": {
-            "description": "Abstract of the resource.",
+            "description": "Include a comprehensive description of its purpose, functionality, and how it contributes to Citizen Observatories. This information helps users understand the component's role in the system (3000 chars max).",
             "type": "string",
             "maxLength": 3000
         },
@@ -36,41 +17,88 @@
             }
         },
         "authors": {
-            "description": "Authors of the resource. Initial + surname",
+            "description": "Indicates who or what organization has created such resource",
             "type": "array",
             "items": {
                 "type": "string"
             }
         },
+        "category": {
+            "description": "Check Category field in https://eu-citizen.science/resources",
+            "type": "string",
+            "$ref": "#/$defs/Categories"
+        },
         "citizen_science_description": {
             "description": "Description of the citizen science aspect of the resource.",
             "type": "string"
         },
-        "category": {
-            "description": "Category of the resource.",
-            "type": "string",
-            "$ref": "#/$defs/Categories"
-        },
-        "publisher": {
-            "description": "Publisher of the resource.",
+        "constraints_and_limitations": {
+            "description": "Constraints And Limitations",
             "type": "string"
         },
-        "publication_year": {
-            "description": "Publication year of the resource.",
+        "date_creation": {
+            "description": "Indicate the date when the resource/component was declared.",
             "type": "date"
         },
-        "license": {
-            "description": "License of the resource.",
-            "type": "string"
+        "difficulty": {
+            "$ref": "#/definitions/Difficulties"
         },
         "doi": {
             "description": "DOI of the resource.",
             "type": "string"
         },
+        "format": {
+            "description": "Format of the resource.",
+            "$ref": "#/$defs/Formats"
+        },
+        "id": {
+            "description": "ID of the resource.",
+            "type": "string"
+        },
+        "instructions": {
+            "description": "Instructions of the resource.",
+            "type": "string"
+        },
+        "is_sustainability_related": {
+            "description": "Is sustainability related.",
+            "type": "boolean"
+        },
+        "keywords": {
+            "description": "Folksonomy created by those publishing new tools/resources to GREENGAGE catalogue.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
         "language": {
             "description": "Language of the resource.",
             "type": "string",
             "$ref": "#/$defs/Languages"
+        },
+        "license": {
+            "description": "License upon which resource can be used.",
+            "type": "string"
+        },
+        "logotype": {
+            "description": "Logotype of the resource.",
+            "type": "uri-reference"
+        },
+        "name": {
+            "description": "Provide a clear and descriptive name for the component/resource.",
+            "type": "string"
+        },
+        "nature": {
+            "description": "It might be Internal software, External software, Internal knowledge and External knowledge.",
+            "type": "string",
+            "$ref": "#/$defs/Natures"
+        },
+        "publication_year": {
+            "description": "Publication year of the resource.",
+            "type": "date"
+        },
+        "publisher": {
+            "description": "Name of organization publishing the resource / component.",
+            "type": "string"
         },
         "problemprofiles": {
             "description": "Problem profiles that the resource tackles.",
@@ -79,41 +107,133 @@
                 "type": "string"
             }
         },
-        "format": {
-            "description": "Format of the resource.",
-            "$ref": "#/$defs/Formats"
-        },
-        "logotype": {
-            "description": "Logotype of the resource.",
-            "type": "uri-reference"
-        },
-        "nature": {
-            "description": "Nature of the resource.",
-            "type": "string",
-            "$ref": "#/$defs/Natures"
-        },
-        "instructions": {
-            "description": "Instructions of the resource.",
-            "type": "string"
-        }
-        
-    },
-    "if": {
-        "properties": {
-            "nature": {
-                "const": "knowledge"
+        "snapshots": {
+            "description": "Urls of images representing what the resource / component looks like and/or what it does.",
+            "type": "array",
+            "items": {
+                "type": "string"
             }
-        }
-    },
-    "then": {
-        "properties": {
-            "software_interlinker": {
-                "description": "Software interlinker of the resource.",
+        },
+        "themes": {
+            "description": "Check Theme field in https://eu-citizen.science/resources",
+            "type": "array",
+            "items": {
                 "type": "string",
-                "$ref": "#/$defs/SoftwareInterlinkers"
+                "$ref": "#/$defs/Themes"
             }
+        },
+        "url": {
+            "description": "Indicates official URL where more detailed information about the resource can be found.",
+            "type": "uri-reference"
         }
     },
+    "allOf": [
+        {
+            "if": {
+                "properties": {
+                    "nature": {
+                        "const": "knowledge"
+                    }
+                }
+            },
+            "then": {
+                "properties": {
+                    "software_interlinker": {
+                        "description": "Software interlinker of the resource.",
+                        "type": "string",
+                        "$ref": "#/$defs/SoftwareInterlinkers"
+                    },
+                    "file": {
+                        "description": "File path of the resource.",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "nature": {
+                        "const": "software"
+                    }
+                }
+            },
+            "then": {
+                "properties": {
+                    "integration": {
+                        "definition": "Settings for internal integration",
+                        "$ref": "#/definitions/InternalIntegration"
+                    },
+                    "is_responsive": {
+                        "title": "Is Responsive",
+                        "type": "boolean"
+                    },
+                    "supported_by": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/Supporters"
+                        }
+                    },
+                    "supports_internationalization": {
+                        "title": "Supports Internationalization",
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "nature": {
+                        "const": "externalknowledge"
+                    }
+                }
+            },
+            "then": {
+                "properties": {
+                    "instructions": {
+                        "description": "Uri or file path of the resource instructions.",
+                        "type": "object",
+                        "additionalProperties": {
+                            "anyOf": [
+                                {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 2083,
+                                    "format": "uri"
+                                },
+                                {
+                                    "type": "string",
+                                    "format": "file-path"
+                                }
+                            ]
+                        }
+                    },
+                    "uri": {
+                        "description": "Uri of the resource",
+                        "type": "object"
+                    }
+                }
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "nature": {
+                        "const": "externalsoftware"
+                    }
+                }
+            },
+            "then": {
+                "properties": {
+                    "uri": {
+                        "description": "Uri of the resource",
+                        "type": "object"
+                    }
+                }
+            }
+        }
+    ],
     "$defs": {
         "Languages": {
             "default": "en",
@@ -151,6 +271,17 @@
                 "Still Image"
             ]
         },
+        "Difficulties": {
+            "title": "Difficulties",
+            "description": "An enumeration.",
+            "enum": [
+                "very_easy",
+                "easy",
+                "medium",
+                "difficult",
+                "very_difficult"
+            ]
+        },
         "Formats": {
             "enum": [
                 "pdf",
@@ -160,10 +291,80 @@
                 "sofware"
             ]
         },
+        "InternalIntegration": {
+            "title": "InternalIntegration",
+            "type": "object",
+            "properties": {
+                "service_name": {
+                    "title": "Service Name",
+                    "type": "string"
+                },
+                "domain": {
+                    "title": "Domain",
+                    "type": "string"
+                },
+                "path": {
+                    "title": "Path",
+                    "type": "string"
+                },
+                "is_subdomain": {
+                    "title": "Is Subdomain",
+                    "type": "boolean"
+                },
+                "api_path": {
+                    "title": "Api Path",
+                    "type": "string"
+                },
+                "capabilities": {
+                    "$ref": "#/definitions/Capabilities"
+                },
+                "capabilities_translations": {
+                    "$ref": "#/definitions/CapabilitiesTranslations"
+                },
+                "auth_method": {
+                    "$ref": "#/definitions/AuthMethods"
+                }
+            },
+            "required": [
+                "service_name",
+                "domain",
+                "path",
+                "is_subdomain",
+                "api_path",
+                "capabilities",
+                "capabilities_translations",
+                "auth_method"
+            ]
+        },
         "Natures": {
             "enum": [
                 "software",
-                "knowledge"
+                "externalsoftware",
+                "knowledge",
+                "externalknowledge"
+            ]
+        },
+        "Themes": {
+            "enum": [
+                "Introduction to CS",
+                "Best Practices",
+                "Project Management",
+                "Research design and methods",
+                "Engagement",
+                "Co-creation",
+                "Communication",
+                "Event planning",
+                "CS stories",
+                "Empowerment",
+                "Data quality and standards",
+                "Instructions",
+                "Link with formal education",
+                "Regulations and ethics",
+                "Impact",
+                "Evaluation of citizen science",
+                "Project sustainability",
+                "Transferability",
+                "Reflections on science"
             ]
         },
         "SoftwareInterlinkers": {
@@ -172,6 +373,14 @@
                 "surveyeditor",
                 "ceditor",
                 "externalresourcemanager"
+            ]
+        },
+        "Supporters": {
+            "title": "Supporters",
+            "enum": [
+                "saas",
+                "on_premise",
+                "installed_app"
             ]
         }
     }
