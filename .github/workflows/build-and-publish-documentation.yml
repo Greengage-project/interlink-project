@@ -27,4 +27,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: documentation
-          folder: docsHtml
+          folder: docs/html
