@@ -16,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.GREENGAGE_PROJECT_GITHUB_TOKEN }}
+          token: ${{ secrets.TOKEN_PUBLISH_GPAGES }}
 
       - name: Build documentation
         run: |
