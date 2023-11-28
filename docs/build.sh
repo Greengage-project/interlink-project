@@ -1,1 +1,1 @@
-sphinx-build -b html -D language=en . ./html
+sphinx-build -b html -D language=en . ../docsHtml
