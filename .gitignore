@@ -5,3 +5,4 @@ envs/*/letsencrypt/
 __pycache__
 envs/demo/.env
 envs/demo/secrets.env
+envs/demo/.env
