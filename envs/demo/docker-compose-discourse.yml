@@ -1,0 +1,93 @@
+version: "3.9"
+services:
+  discourse:
+    container_name: discourse
+    image: docker.io/bitnami/discourse:3.1.3
+    ports:
+      - "4000:3000"
+    volumes:
+      - "discourse_data:/bitnami/discourse"
+    depends_on:
+      - postgresql
+      - redis
+    env_file:
+      - .env
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - DISCOURSE_HOST=demo.greengage-project.eu/discourse
+      - DISCOURSE_DATABASE_HOST=postgresql
+      - DISCOURSE_DATABASE_PORT_NUMBER=5432
+      - DISCOURSE_DATABASE_USER=bn_discourse
+      - DISCOURSE_DATABASE_NAME=bitnami_discourse
+      - DISCOURSE_REDIS_HOST=redis
+      - DISCOURSE_REDIS_PORT_NUMBER=6379
+      - DISCOURSE_USERNAME=admin
+      - DISCOURSE_PASSWORD=adm1nadm1nadm1nadm1nChangeThis
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-public
+      - traefik.http.routers.${PLATFORM_STACK_NAME?Variable not set}-discourse.entrypoints=websecure
+      - traefik.http.routers.${PLATFORM_STACK_NAME?Variable not set}-discourse.tls.certresolver=letsencrypt
+      - traefik.http.routers.${PLATFORM_STACK_NAME?Variable not set}-discourse.tls=true
+      - traefik.http.services.${PLATFORM_STACK_NAME?Variable not set}-discourse.loadbalancer.server.port=4000
+      - traefik.http.routers.${PLATFORM_STACK_NAME?Variable not set}-discourse.rule=Host(`${DOMAIN?Variable not set}`) && PathPrefix(`/discourse`)
+      - traefik.http.routers.${PLATFORM_STACK_NAME?Variable not set}-discourse.middlewares=discourse-stripprefix
+      - traefik.http.middlewares.discourse-stripprefix.stripprefix.prefixes=/discourse
+    networks:
+      - traefik-public
+      - discourse-tier
+
+  postgresql:
+    image: docker.io/bitnami/postgresql:16
+    networks:
+      - discourse-tier
+    volumes:
+      - "postgresql_data:/bitnami/postgresql"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - POSTGRESQL_USERNAME=bn_discourse
+      - POSTGRESQL_DATABASE=bitnami_discourse
+
+  redis:
+    image: docker.io/bitnami/redis:7.0
+    networks:
+      - discourse-tier
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - "redis_data:/bitnami/redis"
+
+  sidekiq:
+    image: docker.io/bitnami/discourse:3
+    networks:
+      - discourse-tier
+    depends_on:
+      - discourse
+    volumes:
+      - "sidekiq_data:/bitnami/discourse"
+    command: /opt/bitnami/scripts/discourse-sidekiq/run.sh
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - DISCOURSE_HOST=localhost
+      - DISCOURSE_DATABASE_HOST=postgresql
+      - DISCOURSE_DATABASE_PORT_NUMBER=5432
+      - DISCOURSE_DATABASE_USER=bn_discourse
+      - DISCOURSE_DATABASE_NAME=bitnami_discourse
+      - DISCOURSE_REDIS_HOST=redis
+      - DISCOURSE_REDIS_PORT_NUMBER=6379
+
+volumes:
+  postgresql_data:
+    driver: local
+  redis_data:
+    driver: local
+  discourse_data:
+    driver: local
+  sidekiq_data:
+    driver: local
+
+networks:
+  traefik-public:
+    external: true
+  discourse-tier:
+    external: false

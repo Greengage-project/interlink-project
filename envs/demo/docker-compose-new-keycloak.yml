@@ -1,0 +1,67 @@
+version: "3.9"
+services:
+  sso-db:
+    container_name: ${PLATFORM_STACK_NAME}-sso-db
+    image: postgres
+    env_file:
+      - .env
+    volumes:
+      - sso_postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${KEYCLOAK_USER}
+      - POSTGRES_PASSWORD=${KEYCLOAK_PASSWORD}
+      - POSTGRES_DB=${KEYCLOAK_DB_DATABASE}
+    networks:
+      - traefik-public
+    logging:
+      driver: "json-file"
+      options:
+        tag: "{{.ImageName}}|{{.Name}}|{{.ImageFullID}}|{{.FullID}}"
+
+  sso-keycloak:
+    container_name: ${PLATFORM_STACK_NAME}-sso-keycloak
+    image: quay.io/keycloak/keycloak:23.0
+    env_file:
+      - .env
+    command: 
+      - "start-dev"
+    environment:
+      # https://www.keycloak.org/server/hostname
+      - KEYCLOAK_ADMIN=${KEYCLOAK_USER}
+      - KEYCLOAK_ADMIN_PASSWORD=${KEYCLOAK_PASSWORD}
+      - DB_SCHEMA=public
+      - DB_VENDOR=POSTGRES
+      - DB_ADDR=sso-db
+      - DB_DATABASE=${KEYCLOAK_DB_DATABASE}
+      - DB_USER=${KEYCLOAK_USER}
+      - DB_PASSWORD=${KEYCLOAK_PASSWORD}
+      - PROXY_ADDRESS_FORWARDING=true
+      - TZ=${TZ}
+      - KC_HOSTNAME=sso.${DOMAIN}
+      - KC_PROXY=edge
+      - KC_HTTP_ENABLED=true
+      - KC_PROXY_ADDRESS_FORWARDING=true
+      - KC_HOSTNAME_STRICT=false
+    depends_on:
+      - sso-db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${PLATFORM_STACK_NAME}-keycloaksso.rule=Host(`sso.${DOMAIN}`)"
+      - "traefik.http.routers.${PLATFORM_STACK_NAME}-keycloaksso.entrypoints=websecure"
+      - "traefik.http.routers.${PLATFORM_STACK_NAME}-keycloaksso.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.${PLATFORM_STACK_NAME}-keycloaksso.tls=true"
+      - "traefik.http.middlewares.testHeader.headers.customrequestheaders.X-Forwarded-Proto=https"
+    networks:
+      - traefik-public
+
+
+volumes:
+  sso_postgres_data:
+    driver: local
+  sso_keycloak_data:
+    driver: local
+
+
+networks:
+  traefik-public:
+    external: true
