@@ -9,6 +9,7 @@ services:
       - .env
     environment:
       - POSTGRES_MULTIPLE_DATABASES=weblate
+      - PGUSER=${POSTGRES_USER}
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready" ]
       interval: 10s
