@@ -1161,6 +1161,9 @@ services:
       - keycloak_db
     volumes:
       - keycloak-data:/opt/jboss/keycloak/standalone/data
+      - ./keycloak/greengage-keycloak-custom/target/greengageflow-keycloak-spi-1.0.jar:/opt/jboss/keycloak/standalone/deployments/greengageflow.jar
+      - ./keycloak/surveyFormFields.ftl:/opt/jboss/keycloak/themes/keycloak/login/surveyFormFields.ftl
+      - ./keycloak/keycloak_custom_register.ftl:/opt/jboss/keycloak/themes/keycloak/login/register.ftl
     ports:
       - "8081:8080"
     labels:
@@ -1177,6 +1180,96 @@ services:
       driver: "json-file"
       options:
         tag: "{{.ImageName}}|{{.Name}}|{{.ImageFullID}}|{{.FullID}}"
+
+  myAccount:
+    image: projectgreengage/my-account:${MY_ACCOUNT}
+    container_name: ${PLATFORM_STACK_NAME}-my-Account
+    env_file:
+      - .env
+    environment:
+      - KEYCLOAK_CLIENT_ID=${MYACCOUNT_KEYCLOAK_CLIENT_ID}
+      - KEYCLOAK_CLIENT_SECRET=${MYACCOUNT_KEYCLOAK_CLIENT_SECRET}
+      - KEYCLOAK_ISSUER_URL=${MYACCOUNT_KEYCLOAK_ISSUER_URL}
+      - KEYCLOAK_REALM=${MYACCOUNT_KEYCLOAK_REALM}
+      - KEYCLOAK_BASE_URL=${MYACCOUNT_KEYCLOAK_BASE_URL}
+      - NEXTAUTH_URL=me.${NIPDOMAIN}
+      - NEXTAUTH_URL_INTERNAL=me.${NIPDOMAIN}
+      - NEXT_PUBLIC_SENTRY_DSN=${MYACCOUNT_NEXT_PUBLIC_SENTRY_DSN}
+      - NEXT_PUBLIC_SENTRY_ENVIRONMENT=${MYACCOUNT_NEXT_PUBLIC_SENTRY_ENVIRONMENT}
+      - NEXTAUTH_SECRET=${MYACCOUNT_NEXTAUTH_SECRET}
+      - MINIO_ACCESS_KEY=w8sxav4Mq2EtlC2bXma0
+      - MINIO_SECRET_KEY=fcwt01w3FeHSWQp1d4XTOVwLlIO4M6X4bHsFu7Tk
+      - MINIO_ENDPOINT_PUBLIC=minioapi.${NIPDOMAIN}
+      - MINIO_ENDPOINT=myAccountMinIO
+      - MINIO_PORT=9000
+      - MINIO_USE_SSL=false
+    networks:
+      - traefik-public
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-public
+      - traefik.http.routers.${PLATFORM_STACK_NAME}-my-Account.entrypoints=websecure
+      - traefik.http.routers.${PLATFORM_STACK_NAME}-my-Account.tls.certresolver=letsencrypt
+      - traefik.http.routers.${PLATFORM_STACK_NAME}-my-Account.tls=true
+      - traefik.http.services.my-Account.loadbalancer.server.port=80
+      - traefik.http.routers.${PLATFORM_STACK_NAME}-my-Account.rule=Host(`me.${NIPDOMAIN}`) 
+  
+
+  # access by minio.${NIPDOMAIN}
+  myAccountMinIO:
+    image: minio/minio:RELEASE.2024-04-28T17-53-50Z
+    container_name: ${PLATFORM_STACK_NAME}-MinIO
+    volumes:
+      - minio_data:/data
+    env_file:
+      - .env
+    environment:
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER}
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+      - MINIO_ENDPOINT=minio.${NIPDOMAIN}
+      - MINIO_HOST=minio.${NIPDOMAIN}
+      - MINIO_PORT=9000
+      - MINIO_useSSL=false
+      - MINIO_BROWSER=on
+      
+    networks:
+      - traefik-public
+  
+    command: server /data --console-address ":10000"
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-public"
+      - "traefik.http.routers.myAccountMinIO.rule=Host(`minio.${NIPDOMAIN}`)"
+      - "traefik.http.routers.myAccountMinIO.entrypoints=websecure"
+      - "traefik.http.routers.myAccountMinIO.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.myAccountMinIO.tls=true"
+      - "traefik.http.services.myAccountMinIO.loadbalancer.server.port=10000"
+      - "traefik.http.services.myAccountMinIO.loadbalancer.server.scheme=http"
+      - "traefik.http.routers.myAccountMinIO.service=myAccountMinIO"
+      - "traefik.http.middlewares.myAccountMinIO-stripprefix.stripprefix.prefixes=/minio"
+      - "traefik.http.routers.myAccountMinIO.middlewares=myAccountMinIO-stripprefix"
+
+      - "traefik.http.routers.myAccountMinIOAPI.rule=Host(`minioapi.${NIPDOMAIN}`)"
+      - "traefik.http.routers.myAccountMinIOAPI.entrypoints=websecure"
+      - "traefik.http.routers.myAccountMinIOAPI.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.myAccountMinIOAPI.tls=true"
+      - "traefik.http.services.myAccountMinIOAPI.loadbalancer.server.port=9000"
+      - "traefik.http.services.myAccountMinIOAPI.loadbalancer.server.scheme=http"
+      - "traefik.http.routers.myAccountMinIOAPI.service=myAccountMinIOAPI"
+      - "traefik.http.middlewares.myAccountMinIOAPI-stripprefix.stripprefix.prefixes=/minioapi"
+      - "traefik.http.routers.myAccountMinIOAPI.middlewares=myAccountMinIOAPI-stripprefix"
+
+    ports:
+      - "9001:9000"
+
+
+    logging:
+      driver: "json-file"
+      options:
+        tag: "{{.ImageName}}|{{.Name}}|{{.ImageFullID}}|{{.FullID}}"
+
+
 
   # ckan:
   #   container_name: ckan
@@ -1361,3 +1454,4 @@ volumes:
   coordinator_var: 
   router_var: 
   druid_shared:
+  minio_data:
