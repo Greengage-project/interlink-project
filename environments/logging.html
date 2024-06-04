@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logging Instruction for Microservices &mdash; Interlink  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="KPI obtention" href="kpis.html" />
+    <link rel="prev" title="Environments administration" href="administration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Interlink
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Environments</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Local (development) environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stack.html">Overall stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cicd.html">SW development, CI &amp; CD policies for INTERLINK software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update.html">Environments update</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administration.html">Environments administration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Logging Instruction for Microservices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#send-or-produce-logs">Send or produce logs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#data-structure">Data structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#send-a-log-through-a-post-request-to-the-api-synchronous-approach">Send a log through a POST request to the API (Synchronous approach)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kpis.html">KPI obtention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="weblate.html">Weblate for continous localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="google.html">Google keys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../collaborativeenvironment/index.html">Collaborative environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/acceptance-tests/index.html">User Acceptance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../other_problems.html">Errors</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Interlink</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Environments</a></li>
+      <li class="breadcrumb-item active">Logging Instruction for Microservices</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/environments/logging.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="logging-instruction-for-microservices">
+<h1>Logging Instruction for Microservices<a class="headerlink" href="#logging-instruction-for-microservices" title="Link to this heading"></a></h1>
+<p>The microservice called “backend-logging”, aims to centralize the logs that resulf from user actions. Within each of the deployed microservices, the necessary functions for sending logs to this component must be implemented.</p>
+<p>The purpose of this short manual is to describe the series of steps that a microservice must perform to store and access the logs.</p>
+<section id="send-or-produce-logs">
+<h2>Send or produce logs<a class="headerlink" href="#send-or-produce-logs" title="Link to this heading"></a></h2>
+<section id="data-structure">
+<h3>Data structure<a class="headerlink" href="#data-structure" title="Link to this heading"></a></h3>
+<p>The data sent to the registration service needs to contain the information relevant to the application. In the case of the coproduction microservice, for example, a data log could contain the following information when a user creates a new asset.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># any crud.py file</span>
+<span class="k">await</span> <span class="n">log</span><span class="p">({</span>
+    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;ASSET&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;CREATE&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;coproductionprocess_id&quot;</span><span class="p">:</span> <span class="n">asset</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">objective</span><span class="o">.</span><span class="n">phase</span><span class="o">.</span><span class="n">coproductionprocess_id</span><span class="p">,</span>
+    <span class="s2">&quot;phase_id&quot;</span><span class="p">:</span> <span class="n">asset</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">objective</span><span class="o">.</span><span class="n">phase_id</span><span class="p">,</span>
+    <span class="s2">&quot;objective_id&quot;</span><span class="p">:</span> <span class="n">asset</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">objective_id</span><span class="p">,</span>
+    <span class="s2">&quot;task_id&quot;</span><span class="p">:</span> <span class="n">asset</span><span class="o">.</span><span class="n">task_id</span><span class="p">,</span>
+    <span class="s2">&quot;asset_id&quot;</span><span class="p">:</span> <span class="n">asset</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+    <span class="s2">&quot;external_interlinker&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;interlinker_type&quot;</span><span class="p">:</span> <span class="s2">&quot;SOFTWAREINTERLINKER EXTERNALINTERLINKER&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;knowledgeinterlinker_id&quot;</span><span class="p">:</span> <span class="n">asset</span><span class="o">.</span><span class="n">knowledgeinterlinker_id</span><span class="p">,</span>
+    <span class="s2">&quot;knowledgeinterlinker_name&quot;</span><span class="p">:</span> <span class="n">interlinker</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;softwareinterlinker_id&quot;</span><span class="p">:</span> <span class="n">interlinker</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;softwareinterlinker&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;softwareinterlinker_name&quot;</span><span class="p">:</span> <span class="n">interlinker</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;softwareinterlinker&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">),</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># messages.py of the coproduction service</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">is_logging_disabled</span><span class="p">():</span>
+        <span class="k">return</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;user_id&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;user_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sub&quot;</span><span class="p">,</span> <span class="s2">&quot;anonymous&quot;</span><span class="p">)</span>
+            
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;service&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;coproduction&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;http://logging/api/v1/log&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="bp">cls</span><span class="o">=</span><span class="n">UUIDEncoder</span><span class="p">),</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The above line of code calls the log function (mentioned afterwards) with a dictionary including relevant data about the action performed (model, action, phase, task_id, etc). The log function itself adds ALWAYS the user_id and the service attributes.</p>
+<p>The amount of information saved in a log depends on the specific action that you want to record, therefore the structure could vary from one service to another.</p>
+<p>The mandatory fields are:</p>
+<ul class="simple">
+<li><p>“user_id”: subject of the token provided by the AAC. Corresponds to the user that performs the action.</p></li>
+<li><p>“service” (“coproduction”, “servicepedia”, “loomio”, “catalogue”, “collaborative_environment_frontend”…)</p></li>
+</ul>
+<p>Nevertheless, it is recommended to add at least these keys:</p>
+<ul class="simple">
+<li><p>“model” (“ASSET”, “COPRODUCTIONPROCESS”…)</p></li>
+<li><p>“action” (GET, LIST, CREATE, UPDATE, DELETE, or custom actions such as “ADD_USER”…)</p></li>
+</ul>
+</section>
+<section id="send-a-log-through-a-post-request-to-the-api-synchronous-approach">
+<h3>Send a log through a POST request to the API (Synchronous approach)<a class="headerlink" href="#send-a-log-through-a-post-request-to-the-api-synchronous-approach" title="Link to this heading"></a></h3>
+<p><img alt="API" src="../_images/logging-API.png" /></p>
+<p>You can log an action by simply creating a POST request to these endpoints (depending on the environment).</p>
+<ul class="simple">
+<li><p>POST http://localhost/logging/api/v1/log</p></li>
+<li><p>POST https://dev.interlink-project.eu/logging/api/v1/log</p></li>
+<li><p>POST https://demo.interlink-project.eu/logging/api/v1/log</p></li>
+<li><p>POST https://zgz.interlink-project.eu/logging/api/v1/log</p></li>
+<li><p>POST https://varam.interlink-project.eu/logging/api/v1/log</p></li>
+<li><p>POST https://mef.interlink-project.eu/logging/api/v1/log</p></li>
+</ul>
+<p>Furthermore, the calls SHOULD be made internally, by replacing the DNS name by the name of the logging docker service:</p>
+<ul class="simple">
+<li><p>POST http://logging/api/v1/log</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="administration.html" class="btn btn-neutral float-left" title="Environments administration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="kpis.html" class="btn btn-neutral float-right" title="KPI obtention" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Interlink team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

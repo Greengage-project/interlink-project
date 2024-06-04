@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SW development, CI &amp; CD policies for INTERLINK software &mdash; Interlink  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Environments update" href="update.html" />
+    <link rel="prev" title="Overall stack" href="stack.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Interlink
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Environments</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Local (development) environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stack.html">Overall stack</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SW development, CI &amp; CD policies for INTERLINK software</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#continuous-integration-ci">Continuous Integration (CI)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#unit-tests-ut">Unit Tests (UT)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sw-releases">SW Releases</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#integration-tests-it">Integration Tests (IT)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#building-of-docker-sw-images">Building of Docker SW images</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#continuous-deployment-cd-environments">Continuous Deployment (CD) &amp; Environments</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#local-environment">Local Environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#development-environment-dev">Development Environment (DEV)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#staging-environment-demo">Staging Environment (DEMO)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pilot-servers-zgz-mef-varam">Pilot Servers (ZGZ, MEF, VARAM)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#software-updates">Software Updates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#minor-updates-patches">Minor updates (patches)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#major-sw-updates-new-sw-release">Major SW updates (new SW release)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sw-refactoring">SW refactoring</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#docker-compose-profiling">Docker-compose profiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-persistency">Data persistency</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#current-situation">Current situation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#separation-of-platfrom-sw-services">Separation of platfrom SW services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-backups">Data backups</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="update.html">Environments update</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administration.html">Environments administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging Instruction for Microservices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kpis.html">KPI obtention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="weblate.html">Weblate for continous localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="google.html">Google keys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../collaborativeenvironment/index.html">Collaborative environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/acceptance-tests/index.html">User Acceptance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../other_problems.html">Errors</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Interlink</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Environments</a></li>
+      <li class="breadcrumb-item active">SW development, CI &amp; CD policies for INTERLINK software</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/environments/cicd.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sw-development-ci-cd-policies-for-interlink-software">
+<h1>SW development, CI &amp; CD policies for INTERLINK software<a class="headerlink" href="#sw-development-ci-cd-policies-for-interlink-software" title="Link to this heading"></a></h1>
+<section id="continuous-integration-ci">
+<h2>Continuous Integration (CI)<a class="headerlink" href="#continuous-integration-ci" title="Link to this heading"></a></h2>
+<section id="unit-tests-ut">
+<h3>Unit Tests (UT)<a class="headerlink" href="#unit-tests-ut" title="Link to this heading"></a></h3>
+<p>Every SW package should have Unit Tests (UT) provided by SW package authors (developers).
+Project DevOps (admin) should configure automatic workflow to execute those UT on every push to master branch.</p>
+</section>
+<section id="sw-releases">
+<h3>SW Releases<a class="headerlink" href="#sw-releases" title="Link to this heading"></a></h3>
+<p>Once a SW component archieves an important implementation milestone by developers, its code should be TAGged.
+For SW version which are intended for any deployment, a SW release should be built per each SW repository based on some existing TAG of the code.
+There may be many TAGs on the code (e.g. function1-Monday, function2-Tuesday, etc) and not all of them but some sub-set are intended to become a SW release.</p>
+<p>SW release version is usually based on the TAG value as a kind of extended string for example “TAG+additional_suffix” or “prefix+TAG”.
+Let’s establish the following convention for SW release labels: <em>v1.X.Y-suffix</em> for the mid-term pilot demos, where X and Y are minor versions/subversions and suffix may contain date of functionality or configuration label.</p>
+<p>Having built a SW release should trigger automatic building of a new docker image(s) for this SW repository.
+Docker images should contain TAG or SW version somewhere in the name of the docker image, for ex. “image-Interlink-frontend:v3.1”.
+The deployment of a docker image should be with explicit use of the image (SW release) version suffix “v3.1” instead of just “:latest”.</p>
+<p>All INTERLINK SW packages should be grouped into a single INTERLINK SW release, with a way to configure which versions (TAGs) of particular SW packages should be included in given version (TAG) of the INTERLINK SW release. For example, INTERLINK SW release version 2.1-zgz consists of the following SW versions per SW package:</p>
+<ul class="simple">
+<li><p>Frontend v1.0.8</p></li>
+<li><p>Backend v1.3.2</p></li>
+<li><p>Zgz room booking module v1.2.6</p></li>
+<li><p>VARAM Servicepedia module v1.4.2</p></li>
+<li><p>etc.</p></li>
+</ul>
+</section>
+<section id="integration-tests-it">
+<h3>Integration Tests (IT)<a class="headerlink" href="#integration-tests-it" title="Link to this heading"></a></h3>
+<p>Once the entire INTERLINK SW release is tagged, this should trigger execution of Integration Tests (IT) to check compatibility between cross-dependent SW packages within the SW release. This process is still not in place and pending clarification.</p>
+</section>
+<section id="building-of-docker-sw-images">
+<h3>Building of Docker SW images<a class="headerlink" href="#building-of-docker-sw-images" title="Link to this heading"></a></h3>
+<p>Once both UT and IT completed in “green”, i.e. on successfull (OK, without errors) termination of UT + IT pipelines, a new pipeline building docker images should launch.</p>
+<p>Having no UT/IT available, the pipelines to build docker images should be triggered by having built a SW release per each repository.</p>
+</section>
+</section>
+<section id="continuous-deployment-cd-environments">
+<h2>Continuous Deployment (CD) &amp; Environments<a class="headerlink" href="#continuous-deployment-cd-environments" title="Link to this heading"></a></h2>
+<p>There might be the following SIX environments:</p>
+<ul class="simple">
+<li><p>Local</p></li>
+<li><p>DEV: any push to master triggers re-deployment of latest master code for integration tests.</p></li>
+<li><p>Staging (= DEMO): only docker images built for stable SW releases deployed there.</p></li>
+<li><p>pilot MEF</p></li>
+<li><p>pilot ZGZ</p></li>
+<li><p>pilot VARAM</p></li>
+</ul>
+<section id="local-environment">
+<h3>Local Environment<a class="headerlink" href="#local-environment" title="Link to this heading"></a></h3>
+<p>It is a local computer of a SW package developer. He/she can deploy any versions (branches, tags) of SW there in order to develop his/her SW package. This environment has no docker images autocompiled at GitHub repository, no CI/CD pipelines, etc. and it goes completely under responsibility of particular developer himself/herself.</p>
+</section>
+<section id="development-environment-dev">
+<h3>Development Environment (DEV)<a class="headerlink" href="#development-environment-dev" title="Link to this heading"></a></h3>
+<p>This environment is used for manual tests of all the SW functionalities, integrations, etc for developers of all the Project SW packages. For this, docker images should be re-built per every new push to master branches by CI pipelines once all UT/IT passed. Once docker image(s) built successfully, CD pipelines are started to deploy those new docker images into DEV server.</p>
+</section>
+<section id="staging-environment-demo">
+<h3>Staging Environment (DEMO)<a class="headerlink" href="#staging-environment-demo" title="Link to this heading"></a></h3>
+<p>This environment is used for non-developer members of the project for demonstrations and GUI testing and feedback purposes. For this, docker images are built by CI pipeline out of latest TAGs assigned per every SW package, having all packages passed UT/IT successfully.
+The DEMO server is intended for testing and training sessions with business users, and their work should not be suddenly interrupted by a new docker image deployment. That’s why, once the docker images with new staging SW versions are built, DevOps admin should announce to testing users and somehow coordinate with them day and time of deployment of the new SW to the staging (DEMO) server.</p>
+</section>
+<section id="pilot-servers-zgz-mef-varam">
+<h3>Pilot Servers (ZGZ, MEF, VARAM)<a class="headerlink" href="#pilot-servers-zgz-mef-varam" title="Link to this heading"></a></h3>
+<p>Deployment of INTERLINK SW to pilot servers should contain the same common INTERLINK base SW (web portal + common interlinkers + other platform type components like DBs, auth, logging, etc.) and optionally pilot-specific components (e.g., ZGZ room booking for ZGZ pilot, Servicepedia for VARAM, etc.).
+Functionality of the common SW components (listed above) should be the same, just some customizations (e.g., language translations) may be applied at configuration level, so no need to have separate code branches, but profiles of configuration files.
+The deployment process should be similar to deploying on staging (demo) server, and be customized via environment variables.
+Normally DevOps should take care of customization of deployment, having provided customizations of SW components from developers.</p>
+</section>
+</section>
+<section id="software-updates">
+<h2>Software Updates<a class="headerlink" href="#software-updates" title="Link to this heading"></a></h2>
+<section id="minor-updates-patches">
+<h3>Minor updates (patches)<a class="headerlink" href="#minor-updates-patches" title="Link to this heading"></a></h3>
+<p>Minor SW updates are needed when there is either a bug fix or small functionality improvement which (almost) does not affect (of affects very little) other SW components, API interfaces, Data Model, etc. Usually the reason for such SW update appears during SW testing and corresponding issue is created in redmine for corresponding SW component. Fixing the SW code should start a.s.a.p. New SW release with minor version incremented (for ex. 3.2.1) should be created. Deployment should be done on first possible occasion (e.g. over night or a weekend).</p>
+<p>Such SW change may happen within the same SW release, for example, during the first pilot demo sessions. It is a good practice to have accumulated several patches (bugfixes and minor improvements) together to plan, build, announce and deploy a new minor release to the pilot servers.
+The workflow is as follows: users report bugs or propose improvements in redmine, developers provide TAGged code update in the GIT for them and report to PM for planning the deployment, then deployment goes as planned by PMs.</p>
+</section>
+<section id="major-sw-updates-new-sw-release">
+<h3>Major SW updates (new SW release)<a class="headerlink" href="#major-sw-updates-new-sw-release" title="Link to this heading"></a></h3>
+<p>Such code update corresponds to implementing a new significant functionality. New SW release should be built and deployed with new major version (e.g. 3.2 or 3.2.0). Usually the new SW release should keep back-compatibility, the same SW design, interfaces, system architecture and data models should be preserved, but could be extended.</p>
+<p>Such SW change should happend per different project milestones, for example, there will be initial and final pilot demonstrations with different SW releases. Planning such milestones is done by the entire project. Currently we assume mid-term pilot demos being v1.x.y and end of project pilot demos to be v2.x.y.</p>
+</section>
+<section id="sw-refactoring">
+<h3>SW refactoring<a class="headerlink" href="#sw-refactoring" title="Link to this heading"></a></h3>
+<p>This is very rare case when system architecrue, API interfaces and/or data model are changed significantly or recreated anew. For API this would imply new documentation and testing, for DB this would imply data migration from old DBs into the new ones, with corresponding DB data export and import scriprs, etc.</p>
+<p>Such SW changes usually should not happen within the lifetime of the same project. It may happend when a new project is started as a continuation of another one.</p>
+</section>
+</section>
+<section id="docker-compose-profiling">
+<h2>Docker-compose profiling<a class="headerlink" href="#docker-compose-profiling" title="Link to this heading"></a></h2>
+<p>Docker-compose profiling is a useful mechamism to structure and group lower and upper level SW services within docker-compose YAML file.
+It is described in details here: https://docs.docker.com/compose/profiles/</p>
+<p>The idea is to try to have separate docker-compose files per each SW service and to include (or exclude) them into the deployment of particular environment.</p>
+<p>This part of configuration may still be under revision and improvement by DevOps. Currently it is supposed that DevOps will adjust configurations per pilot deployment, while package developers should just provide a stable and well tested version of their SW code.</p>
+</section>
+<section id="data-persistency">
+<h2>Data persistency<a class="headerlink" href="#data-persistency" title="Link to this heading"></a></h2>
+<p>For the first pilot demos the configuration data is read out from JSON files stored in GitHub SW repository. The user activity data (new co-production processes, task state changes and asset instances) are kept as long as the DB docker container is not reinstralled. On DB container re-deployment these data may be lost.</p>
+<section id="current-situation">
+<h3>Current situation<a class="headerlink" href="#current-situation" title="Link to this heading"></a></h3>
+<p>If DB is part of the SW release (e.g. web portal) and requires re-deplyment on re-installation of the web portal, then to allow bugfix SW updates during the pilot demo sessions but at the same time to keep the user activity data, corresponding data export and import should be realized by use of additional data export/import scripts.</p>
+</section>
+<section id="separation-of-platfrom-sw-services">
+<h3>Separation of platfrom SW services<a class="headerlink" href="#separation-of-platfrom-sw-services" title="Link to this heading"></a></h3>
+<p>Another approach would be to have low level platform services like DB separated from web portal and other components, so re-deployment of web portal (either backend and/or frontend) should not re-deploy the DB container. In this way, the same DB continues to run keeping the accumulated data.</p>
+</section>
+<section id="data-backups">
+<h3>Data backups<a class="headerlink" href="#data-backups" title="Link to this heading"></a></h3>
+<p>Backing up data is a goog practice independently on the DB container configuration and re-deployment policies. Having data backed up periodically will save from the global crashes at the level of hosting server, as well as from incidental data loss during e.g. maintenance or other activities. Backed up data should be kept on physically different server, ideally, on different hosting data center location.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="stack.html" class="btn btn-neutral float-left" title="Overall stack" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="update.html" class="btn btn-neutral float-right" title="Environments update" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Interlink team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

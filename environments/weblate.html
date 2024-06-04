@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weblate for continous localization &mdash; Interlink  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Google keys" href="google.html" />
+    <link rel="prev" title="KPI obtention" href="kpis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Interlink
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Environments</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Local (development) environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stack.html">Overall stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cicd.html">SW development, CI &amp; CD policies for INTERLINK software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update.html">Environments update</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administration.html">Environments administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging Instruction for Microservices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kpis.html">KPI obtention</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Weblate for continous localization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-use-weblate-as-a-user">How to use weblate as a user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deployment-of-weblate">Deployment of weblate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#components-in-weblate">Components in weblate</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creation-of-components">Creation of components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#collaborative-environment-frontend-component">Collaborative environment frontend component</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#seeding-data-component">Seeding data component</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="google.html">Google keys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../collaborativeenvironment/index.html">Collaborative environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/acceptance-tests/index.html">User Acceptance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../other_problems.html">Errors</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Interlink</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Environments</a></li>
+      <li class="breadcrumb-item active">Weblate for continous localization</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/environments/weblate.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="weblate-for-continous-localization">
+<h1>Weblate for continous localization<a class="headerlink" href="#weblate-for-continous-localization" title="Link to this heading"></a></h1>
+<p>Weblate is a libre web-based translation tool with tight version control integration. It provides two user interfaces, propagation of translations across components, quality checks and automatic linking to source files.</p>
+<section id="how-to-use-weblate-as-a-user">
+<h2>How to use weblate as a user<a class="headerlink" href="#how-to-use-weblate-as-a-user" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://docs.google.com/document/u/2/d/1GApY_q1txqRJeYgQ_pZk01WG5XZXl38R-VyLXpIh3t4/edit">Weblate instructions</a></p>
+</section>
+<section id="deployment-of-weblate">
+<h2>Deployment of weblate<a class="headerlink" href="#deployment-of-weblate" title="Link to this heading"></a></h2>
+<p>Weblate is separated from the rest of the services, since it is thought to be deployed only in one (in this case, demo) environment. You can find its docker-compose in the interlink-project repository:</p>
+<p><a class="reference external" href="https://github.com/interlink-project/interlink-project/tree/master/envs/internationalization">Weblate docker compose and files</a></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/datadrive/data/interlink-project/envs/internationalization
+<span class="c1"># FIRST CREATE THE .ENV FILE</span>
+docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+</pre></div>
+</div>
+<p>“.env” file contents:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">DOMAIN</span><span class="o">=</span>demo.interlink-project.eu
+<span class="nv">ADMIN_PASS</span><span class="o">=</span>
+<span class="c1"># allow login with google</span>
+<span class="nv">GOOGLE_KEY</span><span class="o">=</span>
+<span class="nv">GOOGLE_SECRET</span><span class="o">=</span>
+
+<span class="c1"># Postgres</span>
+<span class="nv">POSTGRES_SERVER</span><span class="o">=</span>
+<span class="nv">POSTGRES_USER</span><span class="o">=</span>
+<span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>
+<span class="nv">PGDATA</span><span class="o">=</span>/var/lib/postgresql/data/pgdata
+
+<span class="nv">FROM_EMAIL</span><span class="o">=</span>
+<span class="nv">SMTP_SERVER</span><span class="o">=</span>
+<span class="nv">SMTP_USERNAME</span><span class="o">=</span>
+<span class="nv">SMTP_PASSWORD</span><span class="o">=</span>
+</pre></div>
+</div>
+</section>
+<section id="components-in-weblate">
+<h2>Components in weblate<a class="headerlink" href="#components-in-weblate" title="Link to this heading"></a></h2>
+<section id="creation-of-components">
+<h3>Creation of components<a class="headerlink" href="#creation-of-components" title="Link to this heading"></a></h3>
+<p>Video on github access token and weblate component creation:</p>
+<p><a class="reference external" href="https://drive.google.com/file/d/1KAXBS6TaO0m9y1jHiwS1mATKyieoguUe/view?usp=sharing"><img alt="Watch the video" src="https://images.drivereasy.com/wp-content/uploads/2017/07/img_596dda8d77553.png" /></a></p>
+<p>Steps showed:</p>
+<ul class="simple">
+<li><p>Creation of the github access token:</p>
+<ul>
+<li><p>Go to https://github.com/settings/tokens and create an access token</p></li>
+</ul>
+</li>
+<li><p>Creation of the weblate component:</p>
+<ul>
+<li><p><strong>Repository branch:</strong> master</p></li>
+<li><p><strong>Repository push URL:</strong> https://{GITHUB_USER}:{ACCESS_TOKEN}&#64;github.com/interlink-project/{REPOSITORY_NAME}.git</p></li>
+<li><p><strong>Push branch:</strong> weblate</p></li>
+</ul>
+</li>
+<li><p>Set a webhook on every repository added weblate:</p>
+<ul>
+<li><p>https://github.com/interlink-project/{REPOSITORY_NAME}/settings/hooks</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="collaborative-environment-frontend-component">
+<h3>Collaborative environment frontend component<a class="headerlink" href="#collaborative-environment-frontend-component" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/interlink-project/frontend/tree/master/react/src/translations">Translation files</a></p></li>
+<li><p><a class="reference external" href="https://demo.interlink-project.eu/weblate/projects/collaborative-environment/frontend/">Frontend weblate project</a></p></li>
+</ul>
+</section>
+<section id="seeding-data-component">
+<h3>Seeding data component<a class="headerlink" href="#seeding-data-component" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/interlink-project/interlinkers-data/tree/master/weblate">Translation files</a></p></li>
+<li><p><a class="reference external" href="https://demo.interlink-project.eu/weblate/projects/seeding-data/">Seeding data weblate project</a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="kpis.html" class="btn btn-neutral float-left" title="KPI obtention" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="google.html" class="btn btn-neutral float-right" title="Google keys" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Interlink team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

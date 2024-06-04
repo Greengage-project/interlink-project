@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KPI obtention &mdash; Interlink  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Weblate for continous localization" href="weblate.html" />
+    <link rel="prev" title="Logging Instruction for Microservices" href="logging.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Interlink
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Environments</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Local (development) environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stack.html">Overall stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cicd.html">SW development, CI &amp; CD policies for INTERLINK software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update.html">Environments update</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administration.html">Environments administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging Instruction for Microservices</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">KPI obtention</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-backends">Data backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dremio">Dremio</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#deployment">Deployment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#making-queries">Making queries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automation-of-the-kpi-obtention">Automation of the KPI obtention</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-add-new-kpis">How to add new KPIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cronjob-crontab">Cronjob (crontab)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="weblate.html">Weblate for continous localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="google.html">Google keys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../collaborativeenvironment/index.html">Collaborative environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/acceptance-tests/index.html">User Acceptance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../other_problems.html">Errors</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Interlink</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Environments</a></li>
+      <li class="breadcrumb-item active">KPI obtention</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/environments/kpis.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="kpi-obtention">
+<h1>KPI obtention<a class="headerlink" href="#kpi-obtention" title="Link to this heading"></a></h1>
+<p>A key performance indicator (KPI) is a measurable value that demonstrates how effectively a company is achieving key business objectives. Organizations use KPIs to evaluate success at reaching targets.</p>
+<p>KPI list of the project:</p>
+<blockquote>
+<div><p>https://docs.google.com/spreadsheets/d/1WDA5hatG7NLCzBTpIoVFM_yiRU_Nn6kTsbeYyPXs03A/edit#gid=1922047057</p>
+</div></blockquote>
+<section id="data-backends">
+<h2>Data backends<a class="headerlink" href="#data-backends" title="Link to this heading"></a></h2>
+<p>At the end of the day, the KPIs are a set of queries made to the different data backends (databases) used for the project. Among them:</p>
+<ul class="simple">
+<li><p><strong>catalogue_production:</strong> postgresql database used by the <em>catalogue</em> service.</p>
+<ul>
+<li><p>Data model: https://interlink-project.github.io/interlink-project/collaborativeenvironment/datamodel/datamodel.html#catalogue-service</p></li>
+</ul>
+</li>
+<li><p><strong>coproduction_production:</strong> postgresql database used by the <em>coproduction</em> service.</p>
+<ul>
+<li><p>Data model: https://interlink-project.github.io/interlink-project/collaborativeenvironment/datamodel/datamodel.html#coproduction-service</p></li>
+</ul>
+</li>
+<li><p><strong>elasticsearch6:</strong> Elasticsearch (version 6) database for storing user activity logs. <em>backend-logging</em> service connects to this database and sends the data retrieved from its API. The reason why an old version (6) is being used for this is because Dremio is not compatible with further versions.</p></li>
+<li><p><strong>elasticsearch8:</strong> Elasticsearch (version 8) database used by <em>serviceaugmenter</em> (servicepedia).</p></li>
+</ul>
+</section>
+<section id="dremio">
+<h2>Dremio<a class="headerlink" href="#dremio" title="Link to this heading"></a></h2>
+<p>In the simplest of terms, Dremio is a data lake engine, meaning that you can use Dremio to liberate your data through live and interactive queries sent directly to your cloud-based or on-prem data lake storage.</p>
+<blockquote>
+<div><p>https://www.dremio.com/</p>
+</div></blockquote>
+<section id="deployment">
+<h3>Deployment<a class="headerlink" href="#deployment" title="Link to this heading"></a></h3>
+<p>Dremio is deployed as a single container among all the others. You can see it in the docker-composes of the different environments:</p>
+<blockquote>
+<div><p>https://github.com/interlink-project/interlink-project/blob/master/envs/development/docker-compose.yml</p>
+</div></blockquote>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">...</span>
+
+<span class="nt">dremio</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${PLATFORM_STACK_NAME}-dremio</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dremio/dremio-oss:21.2</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dremio-data:/opt/dremio/data</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik-public</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;9047:9047&quot;</span><span class="w">   </span><span class="c1"># UI (HTTP)</span>
+<span class="w">        </span><span class="c1"># - &quot;31010:31010&quot; # ODBC/JDBC clients</span>
+<span class="w">        </span><span class="c1"># - &quot;2181:2181&quot;   # ZooKeeper</span>
+<span class="w">        </span><span class="c1"># - &quot;45678:45678&quot; # Inter-node communication</span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik.enable=true</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik.docker.network=traefik-public</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik.http.routers.${PLATFORM_STACK_NAME}-dremio.entrypoints=websecure</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik.http.routers.${PLATFORM_STACK_NAME}-dremio.tls.certresolver=letsencrypt</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik.http.routers.${PLATFORM_STACK_NAME}-dremio.tls=true</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik.http.routers.${PLATFORM_STACK_NAME}-dremio.rule=Host(`dremio.${DOMAIN}`)</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik.http.services.${PLATFORM_STACK_NAME}-dremio.loadbalancer.server.port=9047</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+<p>Once the docker service is up, Dremio GUI is accessible through https://dremio.dev.interlink-project.eu/</p>
+<p>Nevertheless, in the first launch there is no admin account yet. For that, a python script has been created (setup-dremio.py) that calls the Dremio API to set up the administrator account and the different backends.</p>
+<p>Dremio setup script at <a class="reference external" href="https://github.com/interlink-project/interlink-project/blob/master/envs/development/setup-dremio.py">https://github.com/interlink-project/interlink-project/blob/master/envs/development/setup-dremio.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span><span class="p">,</span> <span class="n">find_dotenv</span>
+
+<span class="n">load_dotenv</span><span class="p">(</span><span class="n">find_dotenv</span><span class="p">())</span>
+
+<span class="k">class</span> <span class="nc">Config</span><span class="p">():</span>
+    <span class="n">userName</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DREMIO_USERNAME&quot;</span><span class="p">)</span>
+    <span class="n">firstName</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DREMIO_USERNAME&quot;</span><span class="p">)</span>
+    <span class="n">lastName</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DREMIO_USERNAME&quot;</span><span class="p">)</span>
+    <span class="c1">## needs to be with uppercase, lowercase, digits and special character</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DREMIO_PASSWORD&quot;</span><span class="p">)</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DREMIO_EMAIL&quot;</span><span class="p">)</span>
+    <span class="n">dremioServer</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:9047&quot;</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">get_headers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;content-type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span> <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;_dremio</span><span class="si">{authToken}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">authToken</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">)}</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;content-type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span> <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;_dremionull&#39;</span><span class="p">}</span>
+
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">()</span>
+
+<span class="o">...</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{server}</span><span class="s1">/apiv2/bootstrap/firstuser&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">server</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">dremioServer</span><span class="p">),</span> <span class="n">headers</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">get_headers</span><span class="p">(),</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+    <span class="s2">&quot;userName&quot;</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">userName</span><span class="p">,</span>
+    <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">firstName</span><span class="p">,</span>
+    <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">lastName</span><span class="p">,</span>
+    <span class="s2">&quot;createdAt&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()),</span>
+    <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">password</span><span class="p">,</span>
+<span class="p">}))</span>
+
+<span class="n">login</span><span class="p">()</span>
+
+<span class="c1"># POSTGRES SOURCES</span>
+<span class="n">body</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;entityType&quot;</span><span class="p">:</span> <span class="s2">&quot;source&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;catalogue&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;catalogue data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;POSTGRES&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;POSTGRES_USERNAME&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;POSTGRES_PASSWORD&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;hostname&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;POSTGRES_HOST&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;5432&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;authenticationType&quot;</span><span class="p">:</span> <span class="s2">&quot;MASTER&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;fetchSize&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;databaseName&quot;</span><span class="p">:</span> <span class="s2">&quot;catalogue_production&quot;</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+<span class="n">apiPost</span><span class="p">(</span><span class="s1">&#39;catalog&#39;</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="n">body</span><span class="p">)</span>
+
+<span class="n">body</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;entityType&quot;</span><span class="p">:</span> <span class="s2">&quot;source&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;coproduction&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;coproduction data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;POSTGRES&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;POSTGRES_USERNAME&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;POSTGRES_PASSWORD&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;hostname&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;POSTGRES_HOST&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;5432&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;authenticationType&quot;</span><span class="p">:</span> <span class="s2">&quot;MASTER&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;fetchSize&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;databaseName&quot;</span><span class="p">:</span> <span class="s2">&quot;coproduction_production&quot;</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+<span class="n">apiPost</span><span class="p">(</span><span class="s1">&#39;catalog&#39;</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="n">body</span><span class="p">)</span>
+
+<span class="c1"># ELASTICSEARCH SOURCE</span>
+<span class="n">body</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;entityType&quot;</span><span class="p">:</span> <span class="s2">&quot;source&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;elastic&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;elasticsearch for logs&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ELASTIC&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ELASTIC_USERNAME&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ELASTIC_PASSWORD&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;hostList&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;hostname&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ELASTIC_HOST&quot;</span><span class="p">),</span> <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ELASTIC_PORT&quot;</span><span class="p">)}],</span>
+        <span class="s2">&quot;authenticationType&quot;</span><span class="p">:</span> <span class="s2">&quot;MASTER&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">body</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;entityType&quot;</span><span class="p">:</span> <span class="s2">&quot;source&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;elastic2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;elasticsearch for logs&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ELASTIC&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ELASTIC_USERNAME&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ELASTIC_PASSWORD&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;hostList&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;elasticsearch&quot;</span><span class="p">,</span> <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ELASTIC_PORT&quot;</span><span class="p">)}],</span>
+        <span class="s2">&quot;authenticationType&quot;</span><span class="p">:</span> <span class="s2">&quot;MASTER&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+<span class="n">apiPost</span><span class="p">(</span><span class="s1">&#39;catalog&#39;</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="n">body</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The variables are obtained from the .env file (find_dotenv and load_dotenv functions) or directly from the environment. <strong>THAT IS WHY THIS SCRIPT MUST BE EXECUTED BY THE WORKFLOWS AND NOT MANUALLY</strong>, since it needs to has access to ALL the credentials needed for establishing a connection to the databases. Some of that credentials are only in the Github secrets, and consequently, only in the shell executed by the workflows.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>name:<span class="w"> </span>update-dev-environment
+...
+jobs:
+<span class="w">  </span>deploy:
+<span class="w">    </span>...
+<span class="w">    </span>runs-on:<span class="w"> </span>ubuntu-latest
+<span class="w">    </span>environment:<span class="w"> </span>dev
+<span class="w">    </span>steps:
+<span class="w">      </span>-<span class="w"> </span>name:<span class="w"> </span>Deploy<span class="w"> </span>Dev<span class="w"> </span>SSH
+<span class="w">        </span>uses:<span class="w"> </span>appleboy/ssh-action@master
+<span class="w">        </span>with:
+<span class="w">          </span>host:<span class="w"> </span><span class="si">${</span><span class="p">{ secrets.DEV_HOST </span><span class="si">}</span><span class="o">}</span>
+<span class="w">          </span>username:<span class="w"> </span><span class="si">${</span><span class="p">{ secrets.DEV_USERNAME </span><span class="si">}</span><span class="o">}</span>
+<span class="w">          </span>key:<span class="w"> </span><span class="si">${</span><span class="p">{ secrets.SSH_KEY </span><span class="si">}</span><span class="o">}</span>
+<span class="w">          </span>script:<span class="w"> </span><span class="p">|</span>
+<span class="w">            </span><span class="nb">export</span><span class="w"> </span><span class="nv">LOOMIO_SMTP_USERNAME</span><span class="o">=</span><span class="si">${</span><span class="p">{ secrets.LOOMIO_SMTP_USERNAME </span><span class="si">}</span><span class="o">}</span>
+<span class="w">            </span><span class="nb">export</span><span class="w"> </span><span class="nv">LOOMIO_AAC_APP_SECRET</span><span class="o">=</span><span class="si">${</span><span class="p">{ secrets.LOOMIO_AAC_APP_SECRET </span><span class="si">}</span><span class="o">}</span>
+<span class="w">            </span><span class="nb">export</span><span class="w"> </span><span class="nv">MAIL_PASSWORD</span><span class="o">=</span><span class="si">${</span><span class="p">{ secrets.DEV_MAIL_PASSWORD </span><span class="si">}</span><span class="o">}</span>
+<span class="w">            </span><span class="nb">export</span><span class="w"> </span><span class="nv">LOOMIO_SECRET_COOKIE_TOKEN</span><span class="o">=</span><span class="si">${</span><span class="p">{ secrets.LOOMIO_SECRET_COOKIE_TOKEN </span><span class="si">}</span><span class="o">}</span>
+<span class="w">            </span><span class="nb">export</span><span class="w"> </span><span class="nv">LOOMIO_SMTP_PASSWORD</span><span class="o">=</span><span class="si">${</span><span class="p">{ secrets.LOOMIO_SMTP_PASSWORD </span><span class="si">}</span><span class="o">}</span><span class="w">        </span>
+<span class="w">            </span><span class="nb">export</span><span class="w"> </span><span class="nv">LOOMIO_DEVISE_SECRET</span><span class="o">=</span><span class="si">${</span><span class="p">{ secrets.LOOMIO_DEVISE_SECRET </span><span class="si">}</span><span class="o">}</span>
+<span class="w">            </span><span class="nb">export</span><span class="w"> </span><span class="nv">LOOMIO_DEVISE_SECRET</span><span class="o">=</span><span class="si">${</span><span class="p">{ secrets.LOOMIO_DEVISE_SECRET </span><span class="si">}</span><span class="o">}</span>
+<span class="w">            </span>...
+
+<span class="w">            </span>pip3<span class="w"> </span>install<span class="w"> </span>python-dotenv<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python3<span class="w"> </span>setup-dremio.py
+<span class="w">            </span>...
+</pre></div>
+</div>
+<blockquote>
+<div><p>Line 75 in update-dev-environment workflow</p>
+</div></blockquote>
+</section>
+<section id="making-queries">
+<h3>Making queries<a class="headerlink" href="#making-queries" title="Link to this heading"></a></h3>
+<p>Dremio allows to make SQL queries to SQL and NoSQL databases. This allows to create queries that join data from different backends.</p>
+<section id="simple-queries">
+<h4>Simple queries<a class="headerlink" href="#simple-queries" title="Link to this heading"></a></h4>
+<p>Count all the coproduction processes in the postgres <em>coproduction</em> database:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">coproduction</span><span class="p">.</span><span class="k">public</span><span class="p">.</span><span class="n">coproductionprocess</span>
+</pre></div>
+</div>
+<p>Get all the user activity logs (from the <em>logs</em> index in the <em>elastic2</em> backend):</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">elastic2</span><span class="p">.</span><span class="n">logs</span><span class="p">.</span><span class="n">log</span>
+</pre></div>
+</div>
+</section>
+<section id="cross-backend-queries">
+<h4>Cross-backend queries<a class="headerlink" href="#cross-backend-queries" title="Link to this heading"></a></h4>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">catalogue</span><span class="p">.</span><span class="k">public</span><span class="p">.</span><span class="n">interlinker</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">softwareinterlinker_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">elastic2</span><span class="p">.</span><span class="n">logs</span><span class="p">.</span><span class="n">log</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;CREATE&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;ASSET&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="automation-of-the-kpi-obtention">
+<h3>Automation of the KPI obtention<a class="headerlink" href="#automation-of-the-kpi-obtention" title="Link to this heading"></a></h3>
+<p>Dremio exposes an API (https://docs.dremio.com/software/rest-api/) that can be used to send queries to the data backends. Taking that into account, a python script has been created in order to automate this obtention by executing it every X time.</p>
+<p>The script is located in cronjobs/jobs/dremio/kpis.py.</p>
+<blockquote>
+<div><p>https://github.com/interlink-project/interlink-project/blob/master/envs/development/cronjobs/jobs/dremio/kpis.py</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sheets</span> <span class="kn">import</span> <span class="n">service</span><span class="p">,</span> <span class="n">sheet_id</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">dateutil.relativedelta</span>
+<span class="kn">from</span> <span class="nn">common</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># date in the left cell</span>
+<span class="n">date_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">str_date</span> <span class="o">=</span> <span class="n">date_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S&quot;</span><span class="p">)</span>
+
+<span class="n">d2</span> <span class="o">=</span> <span class="n">date_time</span> <span class="o">-</span> <span class="n">dateutil</span><span class="o">.</span><span class="n">relativedelta</span><span class="o">.</span><span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">one_month_before</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">login</span><span class="p">()</span>
+
+<span class="n">queries</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;A7: Number of coproduction processes&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sql&quot;</span><span class="p">:</span> <span class="s2">&quot;SELECT COUNT(*) FROM coproduction.public.coproductionprocess&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;extract_count&quot;</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;A7.1: Number of coproduction processes in english&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sql&quot;</span><span class="p">:</span> <span class="s2">&quot;SELECT COUNT(*) FROM coproduction.public.coproductionprocess WHERE coproductionprocess.</span><span class="se">\&quot;</span><span class="s2">language</span><span class="se">\&quot;</span><span class="s2"> LIKE &#39;en&#39;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;extract_count&quot;</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="p">},</span>
+    <span class="p">(</span><span class="o">...</span><span class="p">)</span>    
+<span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Obtaining kpis on&quot;</span><span class="p">,</span> <span class="n">str_date</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">run_queries</span><span class="p">(</span><span class="n">queries</span><span class="p">)</span>
+
+<span class="c1"># print(json.dumps(results))</span>
+
+<span class="n">ENVIRONMENT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;PLATFORM_STACK_NAME&quot;</span><span class="p">)</span>
+
+<span class="c1"># send data to GoogleDrive</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">spreadsheets</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span> <span class="n">spreadsheetId</span><span class="o">=</span><span class="n">sheet_id</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ENVIRONMENT</span><span class="si">}</span><span class="s2">!A1:ZZ1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;values&#39;</span><span class="p">,</span> <span class="p">[[]])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">values_to_insert</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">update</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">header</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="c1"># check if all query names are present in header and add a new one if not present</span>
+    <span class="k">for</span> <span class="n">query</span> <span class="ow">in</span> <span class="n">queries</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">header</span><span class="p">:</span>
+            <span class="n">header</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">update</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Added </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> to header&quot;</span><span class="p">)</span>
+
+    <span class="c1"># update header if needed</span>
+    <span class="k">if</span> <span class="n">update</span><span class="p">:</span>
+        <span class="n">service</span><span class="o">.</span><span class="n">spreadsheets</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">()</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="n">spreadsheetId</span><span class="o">=</span><span class="n">sheet_id</span><span class="p">,</span>
+            <span class="nb">range</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ENVIRONMENT</span><span class="si">}</span><span class="s2">!A1:ZZ1&quot;</span><span class="p">,</span>
+            <span class="n">body</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;majorDimension&quot;</span><span class="p">:</span> <span class="s2">&quot;ROWS&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">header</span><span class="p">]</span>
+            <span class="p">},</span>
+            <span class="n">valueInputOption</span><span class="o">=</span><span class="s2">&quot;USER_ENTERED&quot;</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># if there are no cells in the header, create them with the kpis names</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Date time&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">queries</span><span class="p">]</span>
+    <span class="n">values_to_insert</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">header</span>
+    <span class="p">)</span>
+    <span class="n">values_to_insert</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="p">[</span><span class="s2">&quot;Last value&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;=INDICE( FILTER( </span><span class="si">{</span><span class="n">char</span><span class="si">}</span><span class="s2">3:</span><span class="si">{</span><span class="n">char</span><span class="si">}</span><span class="s2"> , NO( ESBLANCO( </span><span class="si">{</span><span class="n">char</span><span class="si">}</span><span class="s2">3:</span><span class="si">{</span><span class="n">char</span><span class="si">}</span><span class="s2"> ) ) ) , FILAS( FILTER( </span><span class="si">{</span><span class="n">char</span><span class="si">}</span><span class="s2">3:</span><span class="si">{</span><span class="n">char</span><span class="si">}</span><span class="s2"> , NO( ESBLANCO( </span><span class="si">{</span><span class="n">char</span><span class="si">}</span><span class="s2">3:</span><span class="si">{</span><span class="n">char</span><span class="si">}</span><span class="s2"> ) ) ) ) )&quot;</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="s2">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+
+<span class="c1"># set each value of row depending on the index of the name of the kpi in the header</span>
+<span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="n">str_date</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">query_name</span><span class="p">,</span> <span class="n">query_result</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">header</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">query_name</span><span class="p">)</span>
+    <span class="n">set_list</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">query_result</span><span class="p">))</span>
+
+<span class="n">values_to_insert</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+    <span class="n">row</span>
+<span class="p">)</span>
+
+
+<span class="c1"># append (the header if necessary) and the row to the existing sheet, defined by ENVIRONMENT (development, demo, zgz...)</span>
+<span class="n">service</span><span class="o">.</span><span class="n">spreadsheets</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">()</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+    <span class="n">spreadsheetId</span><span class="o">=</span><span class="n">sheet_id</span><span class="p">,</span>
+    <span class="nb">range</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ENVIRONMENT</span><span class="si">}</span><span class="s2">!A:Z&quot;</span><span class="p">,</span>
+    <span class="n">body</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;majorDimension&quot;</span><span class="p">:</span> <span class="s2">&quot;ROWS&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="n">values_to_insert</span>
+    <span class="p">},</span>
+    <span class="n">valueInputOption</span><span class="o">=</span><span class="s2">&quot;USER_ENTERED&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Document updated. See it at: https://docs.google.com/spreadsheets/d/</span><span class="si">{</span><span class="n">sheet_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>The script defines a list (<em>queries</em>) that contains a dict for every KPI. This dicts must contain at least two keys; <em>name</em> (name of the KPI) and <em>sql</em> (SQL query). If the query is a count query (COUNT(*)), you may also want to set the <em>extract_count</em> key to True, in order to extract the number that the query returns.</p>
+<p>The results are stored in an excel document located in: https://docs.google.com/spreadsheets/d/1WDA5hatG7NLCzBTpIoVFM_yiRU_Nn6kTsbeYyPXs03A/edit#gid=0</p>
+</section>
+<section id="how-to-add-new-kpis">
+<h3>How to add new KPIs<a class="headerlink" href="#how-to-add-new-kpis" title="Link to this heading"></a></h3>
+<p>The <em>name</em> attribute is used to locate or create the column headers. For example, every time an SQL query is executed, its result is stored in the index of a list (values_to_insert list) depending on the index of the element in the header equal to the <em>name</em> attribute. That way, if a query fails, the rest of the queries will be put in the correct index.</p>
+<p>If the <em>name</em> of a query is not found in the header, it is appended, so a new column is created.</p>
+<p>In conclusion, the only thing needed to add a new KPI is to add a new entry to the <em>queries</em> list.</p>
+<blockquote>
+<div><p>:warning: <strong>Every time you update the KPIs script file crontab service must be restarted in order to apply the last changes</strong></p>
+</div></blockquote>
+</section>
+<section id="cronjob-crontab">
+<h3>Cronjob (crontab)<a class="headerlink" href="#cronjob-crontab" title="Link to this heading"></a></h3>
+<p>The script is executed every X time (it depends on the environment). There is a service called <strong>crontab</strong> in every docker-compose that is responsible for executing some cronjobs.</p>
+<p>The configuration is located at https://github.com/interlink-project/interlink-project/blob/master/envs/development/cronjobs/config.json</p>
+<p>The configuration of the dev environment is as follows:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;schedule&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@every 10m&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cd /opt/jobs/dremio &amp;&amp; python3 kpis.py&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;onstart&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>To restart it, you could access portainer and restart it using the GUI.</p>
+<p>https://portainer.dev.interlink-project.eu/#!/home</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="logging.html" class="btn btn-neutral float-left" title="Logging Instruction for Microservices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="weblate.html" class="btn btn-neutral float-right" title="Weblate for continous localization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Interlink team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

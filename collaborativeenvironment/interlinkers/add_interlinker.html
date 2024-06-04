@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instructions to create new Interlinkers &mdash; Interlink  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Translation files manipulation" href="../internationalization.html" />
+    <link rel="prev" title="External interlinkers" href="external.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Interlink
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../environments/index.html">Environments</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Collaborative environment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../frontend.html">Frontend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication/index.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datamodel/index.html">Data model</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Interlinkers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="internal.html">Internal interlinkers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="external.html">External interlinkers</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Instructions to create new Interlinkers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#for-internal-software-interlinkers">For internal software INTERLINKERS:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#for-external-software-interlinkers">For external software INTERLINKERS:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#for-internal-knowledge-interlinker">For internal knowledge INTERLINKER:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#for-external-knowledge-interlinker">For external knowledge INTERLINKER:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../internationalization.html">Translation files manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/acceptance-tests/index.html">User Acceptance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_problems.html">Errors</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Interlink</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Collaborative environment</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Interlinkers</a></li>
+      <li class="breadcrumb-item active">Instructions to create new Interlinkers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/collaborativeenvironment/interlinkers/add_interlinker.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="instructions-to-create-new-interlinkers">
+<h1>Instructions to create new Interlinkers<a class="headerlink" href="#instructions-to-create-new-interlinkers" title="Link to this heading"></a></h1>
+<section id="for-internal-software-interlinkers">
+<h2>For internal software INTERLINKERS:<a class="headerlink" href="#for-internal-software-interlinkers" title="Link to this heading"></a></h2>
+<p>A new software interlinker can be added directly to the catalogue following the steps below:</p>
+<ol class="arabic">
+<li><p>Create a new folder with the interlinker name, if the name has multiple words, it can’t use spaces (hyphens between words):</p>
+<p>For example:</p>
+<p>“Survey Editor Interlinker” should be named: survey-editor</p>
+</li>
+<li><p>Inside the interlinker’s folder create the following files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>interlinker-name
+├── sanpshots (directory)
+|    └── img_1.png (file) 
+|    └── img_2.png (file) 
+|    ...
+├── instructions.md (file)
+├── logo.jpeg (file)
+└── metadata.json (file)               
+</pre></div>
+</div>
+<p>For example for the <a class="reference external" href="https://github.com/interlink-project/backend-catalogue/tree/master/catalogue/seed/interlinkers/software/augmenter">augmenter INTERLINKER folder</a> can be taken as a reference of a internal software INTERLINKER.</p>
+</li>
+<li><p>The catalogue allow to any interlinker to have several snapshots which display the interlinker functionality. All images must be included in the <strong>snapshots folder</strong>. For example, the interlinker augmenter has the follow snapshots:()</p>
+<ul class="simple">
+<li><p>annotate.png</p></li>
+<li><p>approve.png</p></li>
+<li><p>descriptions.png</p></li>
+<li><p>manage.png</p></li>
+</ul>
+<p>All the images will be displayed in the carousel of images inside the catalogue.</p>
+<p><img alt="Carousel" src="https://github.com/interlink-project/interlink-project/raw/master/docs/collaborativeenvironment/interlinkers/images/addInterlinker/carruselInterlinker_1.png" /></p>
+</li>
+<li><p>Fill the <strong>instructions.md</strong> file with all necessary information to be able to use this interlinker. The instructions must follow markdown language (<a class="reference external" href="https://en.wikipedia.org/wiki/Markdown">https://en.wikipedia.org/wiki/Markdown</a>).</p></li>
+<li><p>The <strong>logo.jpeg</strong> must be the logo which will identify assets created by the interlinker.</p></li>
+<li><p>The <strong>metadata.json</strong> must include the following information:</p>
+<p><em><strong>Administrative_scopes</strong></em></p>
+<p>This metadata information refers to the scope where the interlink is implemented, this information must be one of the follow options:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> eu = European Union
+ national= Inside a specific country
+ local= Inside a specific city
+</pre></div>
+</div>
+<p><em><strong>Constraints_and_limitations_translations</strong></em></p>
+<p>This metadata describes general information about the translations.</p>
+<p><em><strong>Description_translations</strong></em></p>
+<p>This metadata describes and present the interlinker. It could be added as a list of several languages. For example, in the case of two languages the metadata information will be:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> &quot;en&quot;: &quot;Augmenter is an Open Source application …&quot;,
+
+ &quot;es&quot;:&quot;Augmenter es una aplicación de código abierto …&quot;
+</pre></div>
+</div>
+<p><em><strong>Difficulty</strong></em></p>
+<p>Describe the level of difficulty in the use of the interlinker. For example if the component is very easy and requires few easy steps to deploy then the level of difficulty could be easy. In others cases the level could be greater as it need a lot of parameters to configure or depends on other software to deploy, the level then could be hard.</p>
+<p><em><strong>Environments</strong></em></p>
+<p>The environment where the interlinker will be deploy. For example, if there are several severs where the platform is deployed, it will contain a list with the names of each server.</p>
+<p><em><strong>Id</strong></em></p>
+<p>A unique identifier for the interlinker in the catalogue.</p>
+<p><em><strong>Instructions_translations</strong></em></p>
+<p>This metadata contains a link to a document where the instructions to create a new translation language.</p>
+<p><em><strong>Integration</strong></em></p>
+<p>This metadata contains several variables used by the collaborative environment to integrate with a new <em>software interlinker</em>. Several of them can be grouped inside the same category.</p>
+<p>Server configuration parameters.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> - For example, in case of augmenter it will be located inside a subdomain called &quot;servicepedia&quot; (https://servicepedia.dev.interlink-project.ue):
+
+     Domain: &quot;&quot;,
+     Is_subdomain: true,
+     Path: &quot;servicepedia&quot;,
+     Service_name: &quot;servicepedia&quot;
+ 
+ - Another example is the case of google Drive (external software INTERLINKER)
+ 
+     &quot;domain&quot;: &quot;&quot;,
+     &quot;is_subdomain&quot;: false,
+     &quot;path&quot;: &quot;googledrive&quot;,
+     “service_name&quot;: &quot;googledrive&quot;
+</pre></div>
+</div>
+<p>Interlinker calling options. For example, for the interlinker augmenter the options used to call the interlinker functionality are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;capabilities&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">_</span><span class="s2">&quot;clone&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;_delete&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;_edit&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;_instantiate&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;_open\_in\_modal&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;_preview&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;_shortcut&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;_view&quot;</span><span class="p">:</span><span class="n">true</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>Translation messages needed when the interlinker is called. For example, in case of the augmenter the options are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;capabilities_translations&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;delete_text_translations&quot;</span><span class="p">:</span>
+        <span class="p">{</span> <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="s2">&quot;Delete una description of Augmenter&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;es&quot;</span><span class="p">:</span> <span class="s2">&quot;Eliminar una descripción del Augmenter&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;instantiate_text_translations&quot;</span><span class="p">:</span>
+        <span class="p">{</span> <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="s2">&quot;Create a new description in Augmenter&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;es&quot;</span><span class="p">:</span> <span class="s2">&quot;Crear una nueva descripci</span><span class="se">\u00f3</span><span class="s2">n en Augmenter&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;view_text_translations&quot;</span><span class="p">:</span>
+        <span class="p">{</span><span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="s2">&quot;Open a description web site to annotate.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;es&quot;</span><span class="p">:</span> <span class="s2">&quot;Abrir una p</span><span class="se">\u00e1</span><span class="s2">gina con descripciones para anotar&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><em><strong>Is_responsive</strong></em></p>
+<p>This metadata specifies if the component is responsive</p>
+<p><em><strong>Is_sustainability_related</strong></em></p>
+<p>This metadata register if the interlinker is sustainable.</p>
+<p><em><strong>Laguages</strong></em></p>
+<p>This metadata specifies the languages supported by the interlinker.</p>
+<p><em><strong>Licence</strong></em></p>
+<p>This metadata specifies the license needed to use this interlinker.</p>
+<p><em><strong>Logotype</strong></em></p>
+<p>This metadata specifies the location of the logo file.</p>
+<p><em><strong>Name_translations</strong></em></p>
+<p>This metadata specifies the translations of the interlinker’s name. For example, in the case of the augmenter all the translation are the same:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;name_translations&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="s2">&quot;Augmenter&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es&quot;</span><span class="p">:</span> <span class="s2">&quot;Augmenter&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;it&quot;</span><span class="p">:</span> <span class="s2">&quot;Augmenter&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;iv&quot;</span><span class="p">:</span> <span class="s2">&quot;Augmenter&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em><strong>Overview_text</strong></em></p>
+<p>This metadata contains a short description of the interlinker.</p>
+<p><em><strong>Problemprofiles</strong></em></p>
+<p>This metadata contains all the related problem profiles.</p>
+<p><em><strong>Regulations_and_standards_translations</strong></em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;regulations_and_standards_translations&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p><em><strong>Supported_by</strong></em></p>
+<p>This metadata specifies if the interlinker is deployed together with the platform or in a external server.</p>
+<p><em><strong>Supports_internationalization</strong></em></p>
+<p>Specifies if the interlinker support several languages.</p>
+<p><em><strong>Tags_translations</strong></em></p>
+<p>Contains a several tags where the interlinker that describe the interlinker functionality.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;decision making&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;idea management&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;improve descriptions&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;public service descriptions&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><em><strong>Targets</strong></em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;targets&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;all&quot;</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<p><em><strong>Type</strong></em></p>
+<p>This metadata specifies the type of interlinker, there is four options:</p>
+<ul class="simple">
+<li><p>Software</p></li>
+<li><p>Externalsoftware</p></li>
+<li><p>Knowledge</p></li>
+<li><p>Externalknowledge</p></li>
+</ul>
+<p><em><strong>Types</strong></em>
+This metadata specifies the functionality of the interlinker.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;types&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;enabling_services;operation_services&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>The next step is to upload this folder to the container interlinkers-catalogue. Inside there is the folder under “/catalogue/seed/” called “<a class="reference external" href="https://github.com/interlink-project/backend-catalogue/tree/master/catalogue/seed/interlinkers/">interlinkers</a>” with several separated types of interlinker.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>backend-catalogue (container)
+/catalogue/seed/ (subfolder)
+└── interlinkers
+    ├── externalknowledge
+    ├── externalsoftware
+    ├── images 
+    ├── knowledge
+    └── software
+
+</pre></div>
+</div>
+<p>For example, the interlinker augmenter was placed in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">interlinkers</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">interlinkers</span><span class="o">/</span><span class="n">software</span><span class="o">/</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="for-external-software-interlinkers">
+<h2>For external software INTERLINKERS:<a class="headerlink" href="#for-external-software-interlinkers" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Clone one of the directories under <a class="reference external" href="https://github.com/interlink-project/backend-catalogue/tree/master/catalogue/seed/interlinkers/externalsoftware">backend-catalogue/catalogue/seed/interlinkers/externalsoftware/</a>.</p></li>
+<li><p>Rename the folder to the corresponding name of such component.</p></li>
+<li><p>Add logo.png, instructions.md and modify adequately metadata.json. (most of it is already explained in the first section, internal software INTERLINKERS)</p></li>
+<li><p>On the integration section of metadata.json for example the google drive INTERLINKER the information is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&quot;domain&quot;: &quot;&quot;,
+&quot;is_subdomain&quot;: false,
+&quot;path&quot;: &quot;googledrive&quot;,
+“service_name&quot;: &quot;googledrive&quot;
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="for-internal-knowledge-interlinker">
+<h2>For internal knowledge INTERLINKER:<a class="headerlink" href="#for-internal-knowledge-interlinker" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Clone one of the directories under <a class="reference external" href="https://github.com/interlink-project/backend-catalogue/tree/master/catalogue/seed/interlinkers/knowledge">backend-catalogue/catalogue/seed/interlinkers/knowledge/</a>.</p></li>
+<li><p>Rename the folder according to the sought internal knowledge INTERLINKER.</p></li>
+<li><p>Update folder snapshots, metadata.json and corresponding resource. (most of it is already explained in the first section, internal software INTERLINKERS)</p></li>
+</ol>
+</section>
+<section id="for-external-knowledge-interlinker">
+<h2>For external knowledge INTERLINKER:<a class="headerlink" href="#for-external-knowledge-interlinker" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Clone one of the directories under <a class="reference external" href="https://github.com/interlink-project/backend-catalogue/tree/master/catalogue/seed/interlinkers/externalknowledge">backend-catalogue/catalogue/seed/interlinkers/externalknowledge/</a>.</p></li>
+<li><p>Rename the folder according to the sought internal knowledge INTERLINKER.</p></li>
+<li><p>Update folder snapshots, metadata.json and corresponding resource. (most of it is already explained in the first section, internal software INTERLINKERS)</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="external.html" class="btn btn-neutral float-left" title="External interlinkers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../internationalization.html" class="btn btn-neutral float-right" title="Translation files manipulation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Interlink team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

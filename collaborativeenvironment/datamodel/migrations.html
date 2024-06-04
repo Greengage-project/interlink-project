@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Migrations on the data models &mdash; Interlink  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Interlinkers" href="../interlinkers/index.html" />
+    <link rel="prev" title="Current data models of the main components of the collaborative environment backend" href="datamodel.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Interlink
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../environments/index.html">Environments</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Collaborative environment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../frontend.html">Frontend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication/index.html">Authentication</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Data model</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="datamodel.html">Current data models of the main components of the collaborative environment backend</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Migrations on the data models</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#revisions-directories">Revisions directories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-create-new-revisions">How to create new revisions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#downgrade-revisions">Downgrade revisions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../interlinkers/index.html">Interlinkers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../internationalization.html">Translation files manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/acceptance-tests/index.html">User Acceptance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_problems.html">Errors</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Interlink</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Collaborative environment</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Data model</a></li>
+      <li class="breadcrumb-item active">Migrations on the data models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/collaborativeenvironment/datamodel/migrations.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="migrations-on-the-data-models">
+<h1>Migrations on the data models<a class="headerlink" href="#migrations-on-the-data-models" title="Link to this heading"></a></h1>
+<p>Once the change to the models (models.py files in the catalogue and coproduction services) have been made, those changes may be reflected in the database architecture. To keep track of those changes and be able to rollback them, migrations are used.</p>
+<section id="revisions-directories">
+<h2>Revisions directories<a class="headerlink" href="#revisions-directories" title="Link to this heading"></a></h2>
+<p>Migrations are stored in “revision files”.</p>
+<ul class="simple">
+<li><p>CATALOGUE: https://github.com/interlink-project/backend-catalogue/tree/master/catalogue/alembic/versions</p></li>
+<li><p>COPRODUCTION: https://github.com/interlink-project/backend-coproduction/tree/master/coproduction/alembic/versions</p></li>
+</ul>
+</section>
+<section id="how-to-create-new-revisions">
+<h2>How to create new revisions<a class="headerlink" href="#how-to-create-new-revisions" title="Link to this heading"></a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>backend-coproduction
+
+<span class="c1"># create a new migration file</span>
+make<span class="w"> </span>migrations<span class="w"> </span><span class="nv">message</span><span class="o">=</span><span class="s2">&quot;Migration message&quot;</span><span class="w"> </span><span class="c1"># does docker-compose exec coproduction alembic revision --autogenerate -m $(message)</span>
+
+<span class="c1"># update the database schema with the last migrations</span>
+make<span class="w"> </span>applymigrations<span class="w"> </span><span class="c1"># does &quot;docker-compose exec coproduction alembic upgrade head&quot;</span>
+</pre></div>
+</div>
+<p>Sometimes it is necessary to implement the migration of the data. For that, take this into account:</p>
+<p>https://stackoverflow.com/questions/24612395/how-do-i-execute-inserts-and-updates-in-an-alembic-upgrade-script</p>
+</section>
+<section id="downgrade-revisions">
+<h2>Downgrade revisions<a class="headerlink" href="#downgrade-revisions" title="Link to this heading"></a></h2>
+<p>Assuming that you only want to go back one revision, use alembic downgrade with a relative migration identifier of -1:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>alembic<span class="w"> </span>downgrade<span class="w"> </span>-1
+</pre></div>
+</div>
+<p>This will run the downgrade() method of your latest revision and update the alembic_version table to indicate the revision you’re now at.</p>
+<p>If you need to go back multiple migrations, run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>alembic<span class="w"> </span><span class="nb">history</span>
+</pre></div>
+</div>
+<p>to view a list of all the migrations in your project (from newest to oldest), then copy and paste the identifier of the migration you want to go back to:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>alembic<span class="w"> </span>downgrade<span class="w"> </span>8ac14e223d1e
+</pre></div>
+</div>
+<p>There’s currently no command to delete migrations from the versions directory, so if you want to completely wipe away all trace of your bad migration, you’ll need to delete the version file (like 4c009570237e_add_widget_table.py) manually.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="datamodel.html" class="btn btn-neutral float-left" title="Current data models of the main components of the collaborative environment backend" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../interlinkers/index.html" class="btn btn-neutral float-right" title="Interlinkers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Interlink team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

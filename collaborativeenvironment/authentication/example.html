@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auth flow example &mdash; Interlink  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Data model" href="../datamodel/index.html" />
+    <link rel="prev" title="Auth microservice" href="microservice.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Interlink
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../environments/index.html">Environments</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Collaborative environment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../frontend.html">Frontend</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Authentication</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="microservice.html">Auth microservice</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Auth flow example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-do-microservices-check-that-a-request-is-authenticated">How do microservices check that a request is authenticated?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advantages-and-drawbacks-of-cookie-authentication">Advantages and drawbacks of cookie authentication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../datamodel/index.html">Data model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interlinkers/index.html">Interlinkers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../internationalization.html">Translation files manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/acceptance-tests/index.html">User Acceptance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_problems.html">Errors</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Interlink</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Collaborative environment</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Authentication</a></li>
+      <li class="breadcrumb-item active">Auth flow example</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/collaborativeenvironment/authentication/example.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="auth-flow-example">
+<h1>Auth flow example<a class="headerlink" href="#auth-flow-example" title="Link to this heading"></a></h1>
+<ol class="arabic simple">
+<li><p>User has not logged in yet (there is no cookie).</p></li>
+</ol>
+<p><img alt="Auth1" src="../../_images/auth1.png" /></p>
+<ol class="arabic simple" start="2">
+<li><p>After making a GET request to /auth/login, if user is not logged in, browser redirects to the OIDC service where the user can log in with credentials or third party providers, such as Google.</p></li>
+</ol>
+<p><img alt="Login" src="../../_images/login.png" /></p>
+<ol class="arabic simple" start="3">
+<li><p>After a successful login, token is stored as a “samesite” cookie. Now, all requests made to the backend microservices behind <strong>localhost</strong> (or the site where is running the <strong>auth</strong> microservice) send the cookie together with the request.</p></li>
+</ol>
+<p><img alt="Auth2" src="../../_images/merged.jpg" /></p>
+<section id="how-do-microservices-check-that-a-request-is-authenticated">
+<h2>How do microservices check that a request is authenticated?<a class="headerlink" href="#how-do-microservices-check-that-a-request-is-authenticated" title="Link to this heading"></a></h2>
+<p>Each endpoint checks if the access token is present <strong>as a cookie or as an authorization header</strong> (being prioritized the cookie), checks its validity and decodes it to set the <em>user_data</em> (contained inside the access token, having name, email and profile image, for example) inside <strong>request</strong> data</p>
+<p><img alt="Auth deps" src="collaborativeenvironment/authentication/images/deps.png" /></p>
+</section>
+<section id="advantages-and-drawbacks-of-cookie-authentication">
+<h2>Advantages and drawbacks of cookie authentication<a class="headerlink" href="#advantages-and-drawbacks-of-cookie-authentication" title="Link to this heading"></a></h2>
+<p>To understand the advantages of this authentication we must really understand how the different services are integrated in the frontend. If we look again at the example of how the interlinker <strong>googledrive</strong> is integrated into the frontend, we will see that it is done through an iframe that loads the path “/googledrive/assets/{id}/instantiate”.</p>
+<p><img alt="Googledrive interlinker integration" src="../../_images/googledrive.png" /></p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/googledrive/assets/{id}/instantiate&quot;</span> <span class="na">frameBorder</span><span class="o">=</span><span class="s">&quot;0&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<section id="alternatives-authorization-header">
+<h3>Alternatives (“authorization” header):<a class="headerlink" href="#alternatives-authorization-header" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>That each service / interlinker integrate its own authentication flow (being complex both to develop and maintain). Likewise, it would entail that the user had to perform the login steps for and for each of the external services that are being injected into the main frontend. <strong>In fact, it would not be possible, because the OIDC provider does not support its loading inside an iframe</strong>.</p></li>
+<li><p>We should find a plausible way to pass the access token to the service contained in the iframe. One way to do this would be to inject it as a parameter in the iframe’s src, which would expose the token:</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/forum/assets/{id}/viewer?access_token={access_token}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="advantages-of-using-cookie-based-auth">
+<h3>Advantages of using cookie-based auth:<a class="headerlink" href="#advantages-of-using-cookie-based-auth" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Once a user has logged in once, through any service (main frontend or interlinker GUIs), ALL the services can make authenticated requests.</p></li>
+<li><p>Logic to implement authentication in any service is trivial and <strong>not framework-dependant</strong>. Given <strong>forum</strong> interlinker as an example, which is developed with NextJS framework, the logic to authenticate an user would be as simple as redirecting the user to the /auth/login route (the auth microservice is responsible to retrieve the token and to set it to a samesite cookie):</p></li>
+<li><p>By the way, <strong>authentication through authorization headers is also allowed (check AuthMiddleware)</strong></p></li>
+</ul>
+</section>
+<section id="drawbacks">
+<h3>Drawbacks:<a class="headerlink" href="#drawbacks" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>All services MUST BE behind the same sitename (being allowed subdomains). In development, this is achieved by the <strong>proxy</strong> microservice, powered by Traefik (take a look in <a class="reference internal" href="#/docs/ROUTING.md"><span class="xref myst">ROUTING.md</span></a>).</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="microservice.html" class="btn btn-neutral float-left" title="Auth microservice" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../datamodel/index.html" class="btn btn-neutral float-right" title="Data model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Interlink team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

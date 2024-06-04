@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Translation files manipulation &mdash; Interlink  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Testing" href="testing.html" />
+    <link rel="prev" title="Instructions to create new Interlinkers" href="interlinkers/add_interlinker.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Interlink
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Collaborative environment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="frontend.html">Frontend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication/index.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datamodel/index.html">Data model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interlinkers/index.html">Interlinkers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Translation files manipulation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#frontend-repository">Frontend repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backend-catalogue">Backend-catalogue</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#change-workflows">Change workflows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#why">Why?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#workaround-to-modify-the-translation-files-manually">Workaround to modify the translation files manually</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/acceptance-tests/index.html">User Acceptance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../other_problems.html">Errors</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Interlink</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Collaborative environment</a></li>
+      <li class="breadcrumb-item active">Translation files manipulation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/collaborativeenvironment/internationalization.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="translation-files-manipulation">
+<h1>Translation files manipulation<a class="headerlink" href="#translation-files-manipulation" title="Link to this heading"></a></h1>
+<section id="frontend-repository">
+<h2>Frontend repository<a class="headerlink" href="#frontend-repository" title="Link to this heading"></a></h2>
+<p>Located at: https://github.com/interlink-project/frontend/tree/master/react/src/translations</p>
+<p>You can change the content of the files manually or through <a class="reference external" href="https://interlink-project.github.io/interlink-project/environments/weblate.html">weblate</a>.</p>
+</section>
+<section id="backend-catalogue">
+<h2>Backend-catalogue<a class="headerlink" href="#backend-catalogue" title="Link to this heading"></a></h2>
+<p>First of all, there are two sets of files:</p>
+<ul class="simple">
+<li><p>Object files: the files that represent the different objects, interlinkers, schemas and problemprofiles. As you can see in them, there are keys such as “name_translations” with a dictionary that contains the translations. Instead, these translations are not supposed to be changed here, but in the translation files.</p>
+<ul>
+<li><p>https://github.com/interlink-project/backend-catalogue/tree/master/catalogue/seed/interlinkers</p></li>
+<li><p>https://github.com/interlink-project/backend-catalogue/tree/master/catalogue/seed/problemprofiles
+https://github.com/interlink-project/backend-catalogue/tree/master/catalogue/seed/schemas</p></li>
+</ul>
+</li>
+<li><p>Translations files: files that are updated when an object is changed / added / removed. For example, if I add a new interlinker, these files are completely erased and generated again.</p>
+<ul>
+<li><p>https://github.com/interlink-project/backend-catalogue/tree/master/catalogue/seed/weblate</p></li>
+</ul>
+</li>
+</ul>
+<section id="change-workflows">
+<h3>Change workflows<a class="headerlink" href="#change-workflows" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Push workflow: for example, someone adds a new schema or changes the phases of an existing one. The workflow generates new translation files based on the current status of the schemas, interlinkers and problemprofiles. So the translation files changed in a push are ignored.</p></li>
+<li><p>Pull request workflow: here, the workflow prevails the changes in the translation files, so the content is analyzed and the object files are updated with the content here. In fact, weblate makes pushes to a branch called “weblate”, and when someone creates a pull request (usually me) this process is executed and then merged with the master branch. This merge (push) to the master branch triggers the “push workflow”, generating new translation files after updating the object files with the translation files generated by weblate.</p></li>
+</ul>
+</section>
+<section id="why">
+<h3>Why?<a class="headerlink" href="#why" title="Link to this heading"></a></h3>
+<p>Weblate needs a foreseeable file structure and key-value pair jsons to retrieve and store the translations made by the users.</p>
+<p>The <a class="reference external" href="https://github.com/interlink-project/backend-catalogue/blob/master/catalogue/seed/generate.py">generate.py</a> file gets all these translatable attributes from the object metadata files and generates Weblate compatible json files. For example:</p>
+<p><a class="reference external" href="https://github.com/interlink-project/backend-catalogue/tree/master/catalogue/seed/interlinkers/software/google-drive/metadata.json">seed/interlinkers/software/google-drive/metadata.json</a> file:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="w">    </span><span class="nt">&quot;description_translations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Google Drive is a file storage and synchronization service developed by Google. Launched on April 24, 2012, Google Drive allows users to store files in the cloud, synchronize files across devices, and share files.\nGoogle Drive encompasses Google Docs, Google Sheets, and Google Slides, which are a part of the Google Docs Editors office suite that permits collaborative editing of documents, spreadsheets, presentations, drawings, forms, and more. Files created and edited through the Google Docs suite are saved in Google Drive.\nThis software INTERLIKER allows users of the collaborative environment to create new documents, spreadsheets and presentations which can be co-edited and shared by co-production team participants&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;es&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Google Drive es un servicio de almacenamiento y sincronizaci\u00f3n de archivos desarrollado por Google. Lanzado el 24 de abril de 2012, Google Drive permite a los usuarios almacenar archivos en la nube, sincronizar archivos entre dispositivos y compartir archivos.\nGoogle Drive incluye Google Docs, Google Sheets y Google Slides, que forman parte de Google Docs Editors. paquete ofim\u00e1tico que permite la edici\u00f3n colaborativa de documentos, hojas de c\u00e1lculo, presentaciones, dibujos, formularios y m\u00e1s. Los archivos creados y editados a trav\u00e9s de la suite Google Docs se guardan en Google Drive.\nEste software INTERLIKER permite a los usuarios del entorno colaborativo crear nuevos documentos, hojas de c\u00e1lculo y presentaciones que pueden ser coeditados y compartidos por los participantes del equipo de coproducci\u00f3n.&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;it&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Google Drive \u00e8 un servizio di archiviazione e sincronizzazione di file sviluppato da Google. Lanciato il 24 aprile 2012, Google Drive consente agli utenti di archiviare file nel cloud, sincronizzare file tra dispositivi e condividere file.\nGoogle Drive comprende Google Docs, Google Sheets e Google Slides, che fanno parte della suite per ufficio di Google Docs Editors che consente la modifica collaborativa di documenti, fogli di lavoro, presentazioni, disegni, moduli e altro ancora. I file creati e modificati tramite la suite Google Docs vengono salvati in Google Drive.\nQuesto INTERLIKER software consente agli utenti dell&#39;ambiente collaborativo di creare nuovi documenti, fogli di calcolo e presentazioni che possono essere modificati e condivisi dai partecipanti del team di coproduzione&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;lv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Google Drive ir failu uzglab\u0101\u0161anas un sinhroniz\u0113\u0161anas pakalpojums, ko izstr\u0101d\u0101jis Google. Pakalpojums uzs\u0101ka darb\u012bbu 2012. gada 24. apr\u012bl\u012b. Google Drive \u013cauj lietot\u0101jiem uzglab\u0101t failus m\u0101kon\u012b, sinhroniz\u0113t tos starp da\u017e\u0101d\u0101m ier\u012bc\u0113m un dal\u012bties ar tiem.\nGoogle Drive sast\u0101v no Google Docs, Google Sheets un Google Slides, kas ir da\u013ca no Google Docs Editors biroja komplekta, kas \u013cauj kop\u012bgi redi\u0123\u0113t dokumentus, izkl\u0101jlapas, prezent\u0101cijas, z\u012bm\u0113jumus, formas u.c. Google Docs izveidotie un redi\u0123\u0113tie faili tiek saglab\u0101ti Google Drive.\n\u0160is programmat\u016bras INTERLINKERs \u013cauj sadarb\u012bbas vides lietot\u0101jiem veidot jaunus dokumentus, izkl\u0101jlapas un prezent\u0101cijas, kas var tikt kop\u0113ji redi\u0123\u0113tas un izplat\u012btas starp koprades komandas dal\u012bbniekiem.&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="w">    </span><span class="nt">&quot;name_translations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Google Drive&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;es&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Google Drive&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;it&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Google Drive&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;lv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Google Drive&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="err">...</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/interlink-project/backend-catalogue/blob/master/catalogue/seed/weblate/es/interlinkers.json">seed/weblate/es/interlinkers.json</a> file:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="err">...</span>
+<span class="w">    </span><span class="nt">&quot;softwareinterlinker;google-drive;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Google Drive&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;softwareinterlinker;loomio;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;p&gt;Loomio is an Open Source solution that offers a workspace for conversation, sharing information and opinions, making proposals, deciding actions and achieving outcomes. Con Loomio es posible&lt;/p&gt;&lt;ul&gt;&lt;li&gt;iniciar y organizar discusiones y mantener un registro de la participaci\u00f3n e implicaci\u00f3n;&lt;/li&gt;&lt;li&gt;gestionar las decisiones colaborativas a trav\u00e9s de diferentes formas de sondeos, encuestas, etc;&lt;/li&gt;&lt;li&gt;permitir la votaci\u00f3n colaborativa en torno a ideas y propuestas en discusi\u00f3n.&lt;/li&gt;&lt;/ul&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Weblate modifies these last files, so there is a need to pass the changes made to them to the object metadata files. For that, the <a class="reference external" href="https://github.com/interlink-project/backend-catalogue/blob/master/catalogue/seed/input.py">input.py</a> file gets the values in the files managed by weblate and passes them to the object metadata files.</p>
+</section>
+<section id="workaround-to-modify-the-translation-files-manually">
+<h3>Workaround to modify the translation files manually<a class="headerlink" href="#workaround-to-modify-the-translation-files-manually" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Make the local changes to the files AND locally execute “python3 input.py”. Then, commit and push all the changes generated to master.</p></li>
+<li><p>Push the changes (only the translation files) to the “weblate” branch and open a pull request, wait for the workflow to finish and delete the branch.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="interlinkers/add_interlinker.html" class="btn btn-neutral float-left" title="Instructions to create new Interlinkers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="testing.html" class="btn btn-neutral float-right" title="Testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Interlink team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

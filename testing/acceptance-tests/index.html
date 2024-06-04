@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Acceptance testing &mdash; Interlink  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Errors" href="../../other_problems.html" />
+    <link rel="prev" title="Testing" href="../../collaborativeenvironment/testing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Interlink
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../collaborativeenvironment/index.html">Collaborative environment</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User Acceptance testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#smoke-testing">Smoke Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acceptance-testing">Acceptance testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_problems.html">Errors</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Interlink</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">User Acceptance testing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/testing/acceptance-tests/index.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="user-acceptance-testing">
+<h1>User Acceptance testing<a class="headerlink" href="#user-acceptance-testing" title="Link to this heading"></a></h1>
+<dl>
+  <dt>Acceptance Testing</dt>
+  <dd>This is a type of testing done by users, customers, or other authorised entities to determine application/software needs and business processes. Acceptance testing is the most important phase of testing as this decides whether the client approves the application/software or not.</dd>
+</dl>
+<dl>
+  <dt>User Acceptance Testing (UAT)</dt>
+  <dd>UAT is a type of testing performed by the end user or the client to verify/accept the software system before moving the software application to the production environment. UAT is done in the final phase of testing after functional, integration and system testing is done.</dd>
+</dl>
+<p>This document ilustrates the different tests needed to ensure that the expected functionality, from the end-user’s point of view, of the INTERLINK Collaborative Environment is met. The main Purpose of UAT is to validate end to end business flow. It does not focus on cosmetic errors, spelling mistakes or system testing. User Acceptance Testing is carried out in a separate testing environment with production-like data setup. It is kind of black box testing where two or more end-users will be involved. User acceptance testing is needed for <strong>testing whether the final product is accepted by client/end-user</strong>.</p>
+<section id="smoke-testing">
+<h2>Smoke Testing<a class="headerlink" href="#smoke-testing" title="Link to this heading"></a></h2>
+<p>The first section carries out a so-called <em>Smoke Testing</em></p>
+<dl>
+  <dt>Smoke Testing</dt>
+  <dd>In computer programming and software testing, smoke testing is preliminary testing to reveal simple failures severe enough to, for example, reject a prospective software release.</dd>
+  <dt>Staging server</dt>
+  <dd>A server used to temporarily show certain users new and revised Internet and/or intranet pages before they are put into production.</dd>
+</dl>
+<p>The following Smoke Testing should be applied over <a class="reference external" href="https://demo.interlink-project.eu/">INTERLINK’s staging server</a>:</p>
+<ol class="arabic simple" start="0">
+<li><p>Before using the Collaborative environment, you must first login with your google credentials or create your own credentials at <a class="reference external" href="https://demo.interlink-project.eu/">https://demo.interlink-project.eu/</a>, i.e. the staging server of INTERLINK. <strong>IMPORTANT</strong>: All members of an envisaged team must logged into the platform before they can be added to a team. <img alt="Login required screen" src="../../_images/image0.PNG" /> <img alt="AAC screen" src="../../_images/image1.PNG" /></p></li>
+<li><p>Create a team which wants to take part in a co-production process. <img alt="Two user sessions" src="../../_images/image2.PNG" /> <img alt="Creating a team" src="../../_images/image3.png" /> <img alt="Adding a user" src="../../_images/image4.png" /> <img alt="Team editing window" src="../../_images/image5.png" /></p></li>
+<li><p>Create a co-production project where the activity to co-create is assessed <img alt="Creating a new co-production project" src="../../_images/image6.png" /></p></li>
+<li><p>Link the created team to the created co-production process. <img alt="Select Team menu option and &quot;Add new Team&quot; button" src="../../_images/image8.png" /> <img alt="Click on pop-up window's Add team button" src="../../_images/image9.png" /></p></li>
+<li><p>Choose a co-production process guide (flexibility to choose the best fitting schema)</p>
+<ul class="simple">
+<li><p>Notice that there are several co-production trees available. We will take the one named “Default schema” <img alt="Select default schema" src="../../_images/image7.png" /></p></li>
+<li><p>Beware of emergence of Guide view menu item on left hand side <img alt="Beware of emergence of Guide view menu item on left hand side" src="../../_images/image10.png" /></p></li>
+<li><p>You may customize such tree to the specific needs of your co-production process. Currently only DELETE task allowed, soon we will be able to add new objectives &amp; tasks. Check below how a task is removed after having clicked on the PENCIL icon which appears on the right hand side of the task visualization panel.
+<img alt="About to remove a task" src="../../_images/image11.png" />
+<img alt="View after removal of task" src="../../_images/image12.png" /></p></li>
+<li><p>Observe that specific co-production trees can be defined and, hence, selected (e.g. VARAM case)</p></li>
+<li><p>You may also assign durations to tasks
+<img alt="Assigning duration to task" src="../../_images/image13.png" /></p></li>
+<li><p>Then we can see in WORKPLAN view the time span defined, by clicking on the “Time planification” link in the GUIDE view or clicking on the left hand side menu option named “Workplan”. You may return to the Workplan view, to see the task details by clicking on the name of the task in the WORKPLAN view.
+<img alt="Workplan view" src="../../_images/image14.png" /></p></li>
+</ul>
+</li>
+<li><p>Create new roles and new teams with different rights than the core co-producers’ team. Currently a role applies to all phases, objectives and tasks of a co-production process.</p>
+<ul class="simple">
+<li><p>Create a new team
+<img alt="Creating a new team" src="../../_images/image15.png" /></p></li>
+<li><p>Create a new role, assigning it the right to “View resources” only
+<img alt="Creation of co-observers role" src="../../_images/image16.png" /></p></li>
+<li><p>Assign the role of co-observers to the co-observers team
+<img alt="Assignment of co-observers role to co-observers team" src="../../_images/image17.png" /></p></li>
+</ul>
+</li>
+<li><p>Use the guide to co-produce SOMETHING, e.g. new document to collect feedback of collaboration process. For each of the tasks in the co-production phases you may select any of the recommended INTERLINKERs or instantiate a new one based on the generic software INTERLINKERs available at the bottom of the screen shown when selecting a co-production task.</p>
+<ul class="simple">
+<li><p>Select another task in the GUIDE view, e.g. ENGAGE &gt; Engage Stakeholders &gt; Create awareness and Communication</p></li>
+<li><p>Notice the INTERLINKERs recommended
+<img alt="Notice INTERLINKERs recommended" src="../../_images/image22.png" /></p></li>
+<li><p>Select a task in the GUIDE view, e.g. ENGAGE &gt; Define legal and ethical framework &gt; Define a non-disclosure agreement (NDA)</p></li>
+<li><p>Click on the blue button at the bottom entitled “Initiate Procedure” to give place to a new Google Docs document
+<img alt="Creating a new Google Docs" src="../../_images/image18.png" /></p></li>
+<li><p>Select the type of document to create with the support of Google Drive INTERLINKER
+<img alt="Select and name the Google Docs" src="../../_images/image19.png" /></p></li>
+<li><p>Realize about the new resource that appears at the bottom of the task description panel
+<img alt="New resource created" src="../../_images/image20.png" /></p></li>
+<li><p>Open it in Google Drive by clicking on the newly created resource name
+<img alt="New resource created" src="../../_images/image21.png" /></p></li>
+</ul>
+</li>
+<li><p>Review progress of project in OVERVIEW
+<img alt="Resources created so far" src="../../_images/image22.png" /></p></li>
+<li><p>Check functionality of the INTERLINK catalogue by clicking on INTERLINKERs, browsing, filtering and selecting INTERLINKERs.</p>
+<ul class="simple">
+<li><p>Enter in the catalogue of INTERLINNKERs by clicking on INTERLINKERs top menu
+<img alt="INTERLINKERs catalogue view" src="../../_images/image23.png" /></p></li>
+<li><p>Filter by selecting options on Nature filter
+<img alt="Filtered INTERLINKERs" src="../../_images/image24.png" /></p></li>
+<li><p>Review contents of an INTERLINKER by clicking on its title
+<img alt="Filtered INTERLINKERs" src="../../_images/image26.png" /></p></li>
+<li><p>You main review what it offers by visiting Preview tab
+<img alt="Filtered INTERLINKERs" src="../../_images/image27.png" /></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="acceptance-testing">
+<h2>Acceptance testing<a class="headerlink" href="#acceptance-testing" title="Link to this heading"></a></h2>
+<p>Next, we will illustrate how to perform a more exhaustive suite of manual tests that expore all currently available functionalities within the Collaborative Environment.</p>
+<p>The steps to validate that the miminum functionalities to allow a collaborative process to be materialized are listed below:</p>
+<ol class="arabic simple" start="0">
+<li><p><strong>Ensure that team members have logged in at least once</strong> at <a class="reference external" href="https://demo.interlink-project.eu/">INTERLINK’s staging server</a></p>
+<ul class="simple">
+<li><p>Ensure that two sessions at least are opened, e.g. one for user user1&#64;deusto.es and another one for user user2&#64;gmail.com, to be able to test the environment’s collaborative features sensibly.</p></li>
+</ul>
+</li>
+<li><p><strong>Create a team</strong> <em>“INTERLINK co-production team for co-evaluation of collaborative environment”</em> which will jointly generate an assessment of the environment and its capabilities to carry out collaborative processes. Add at least 2 members to the team, e.g. user1&#64;deusto.es and user2&#64;gmail.com</p></li>
+<li><p><strong>Create a co-production project</strong>, namely <em>“Co-evaluation of the co-production process”</em></p></li>
+<li><p><strong>Go to Settings</strong> and ensure that the project has a good logo. Click on the pencil icon and then SAVE.</p></li>
+<li><p>Click on <strong>“Team” left hand side</strong> menu and <strong>add the created Team to the project</strong>.</p>
+<ul class="simple">
+<li><p>You can modify the team composition at any time by clicking on the hyperlink of the Team name.</p></li>
+</ul>
+</li>
+<li><p>Click on <strong>“Overview”</strong> and <strong>select the co-production schema</strong> (tree) to use. Choose <em>“Default schema”</em></p></li>
+<li><p>Hit on <strong>“Guide” left hand side menu option</strong> and let’s start as a team co-evaluating the collaborative environment</p></li>
+<li><p><strong>Browse through the different phases</strong> of the co-production guide</p>
+<ul class="simple">
+<li><p>Select different phases</p></li>
+<li><p><strong>Select objectives</strong> within a phase</p></li>
+<li><p><strong>Select tasks</strong> within an objective</p></li>
+<li><p><strong>Observe that different INTERLINKERs are recommeded</strong> for different tasks</p></li>
+</ul>
+</li>
+<li><p><strong>Instantiate a generic INTERLINKER</strong>, where feedback with your observations can be gathered in a shared Google Docs with the rest of the co-evaluators</p>
+<ul class="simple">
+<li><p>In <strong>GUIDE view</strong>, select <em>BUILD &gt; Technical Implementation &gt; Technical implementation</em></p></li>
+<li><p>Hit on <strong>“Initiate Procedure” &gt; “Create a Google Drive document”</strong>, and create a new asset entitled <em>“Feedback about usage of Collaborative Environment”</em></p></li>
+<li><p>Ensure that all team members edit and insert their comments in such shared document</p></li>
+<li><p>Notice that they all could <strong>access to feedback document when clicking on Overview</strong> menu option on the left hand side.</p></li>
+</ul>
+</li>
+<li><p>Explore how to <strong>navigate across the different views</strong> of the Collaborative Environment.</p>
+<ul class="simple">
+<li><p>Explore navigation between “Guide” view and “Workplan” view by hitting on <strong>“Time planification”</strong>, once <strong>within a chosen task</strong></p></li>
+<li><p>Test changing the <strong>Time planification</strong> of a task, by hitting on the <strong>pencil</strong> and selecting start and end period, under the task screen within GUIDE view</p></li>
+<li><p>Explore navigation between “Overview” view and “Guide” view by hitting on <strong>“See Task”</strong></p></li>
+</ul>
+</li>
+<li><p>Use one of the <strong>recommended INTERLINKERs</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>For instance, select <em>“Stakeholders Mapping Canvas”</em> INTERLINKER under task shown when navigating to <em>Engage &gt; Identify Stakeholders</em></p></li>
+<li><p>Click on button “Instantiate as resource to use in the project”</p></li>
+<li><p>Check the newly created resource appears at the bottom of the page under <strong>“Current resources”</strong></p></li>
+<li><p>Open the generated resource in the form of a presentation and add some modifications</p></li>
+</ul>
+<ol class="arabic simple" start="11">
+<li><p>Check that different recommended INTERLINKERs or those generic ones instantiated through <strong>“Initiate Procedure” button</strong> can be started</p></li>
+</ol>
+<ul class="simple">
+<li><p>Continue inspecting the different tasks and INTERLINKERs that are recommended for 5’</p></li>
+<li><p>During the whole process <strong>PLEASE GATHER YOUR IMPRESSIONS / FEEDBACK on the shared document entitled “Feedback about usage of Collaborative Environment”</strong></p></li>
+<li><p>Remember that from <strong>OVERVIEW</strong>, you can simply click on the resource title to be able to open it.</p></li>
+</ul>
+<ol class="arabic simple" start="12">
+<li><p>In order to <strong>provide direct feedback</strong> on any mistakes, bugs requested please use the following two channels:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Fill in the <strong><a class="reference external" href="https://docs.google.com/forms/d/e/1FAIpQLSei2Iful343wNa3WMwS4di4Z_cqzv0ibuFf_I41hIrUm1pUVA/viewform">ALPHA QUESTIONNAIRE</a> of INTERLINK</strong>.</p></li>
+<li><p>Access to the <strong><a class="reference external" href="http://redmine.interlink-project.eu/">Redmine support channel</a></strong>, log in and create a new issue under <a class="reference external" href="http://redmine.interlink-project.eu/projects/proj_wp4_platform">proj_wp4_PLATFORM</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../collaborativeenvironment/testing.html" class="btn btn-neutral float-left" title="Testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../other_problems.html" class="btn btn-neutral float-right" title="Errors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Interlink team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

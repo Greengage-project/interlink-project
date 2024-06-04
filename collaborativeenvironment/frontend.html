@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frontend &mdash; Interlink  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Authentication" href="authentication/index.html" />
+    <link rel="prev" title="Collaborative environment" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Interlink
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Collaborative environment</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Frontend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#technologies">Technologies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#react-components">React components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-add-a-new-element">How to add a new element</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-add-a-new-route">How to add a new route</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-add-a-new-element-in-the-sidebar">How to add a new element in the sidebar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-structure">File structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#translations">Translations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api-calls">API calls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#state-management">State management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#props">Props</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#component-level-state">Component level state</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#global-state">Global state</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#state-managed-by-redux">State managed by Redux</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authentication/index.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datamodel/index.html">Data model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interlinkers/index.html">Interlinkers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internationalization.html">Translation files manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/acceptance-tests/index.html">User Acceptance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../other_problems.html">Errors</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Interlink</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Collaborative environment</a></li>
+      <li class="breadcrumb-item active">Frontend</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/collaborativeenvironment/frontend.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="frontend">
+<h1>Frontend<a class="headerlink" href="#frontend" title="Link to this heading"></a></h1>
+<section id="technologies">
+<h2>Technologies<a class="headerlink" href="#technologies" title="Link to this heading"></a></h2>
+<p>The main technologies used for the frontend are:</p>
+<ol class="arabic simple">
+<li><p><strong>NGINX:</strong> is open source software for web serving, reverse proxying, caching, load balancing, media streaming, and more.</p></li>
+<li><p><strong>React:</strong> is a free and open-source front-end JavaScript library for building user interfaces based on UI components. It is maintained by Meta (formerly Facebook) and a community of individual developers and companies. React can be used as a base in the development of single-page, mobile, or server-rendered applications with frameworks like Next.js. However, React is only concerned with state management and rendering that state to the DOM, so creating React applications usually requires the use of additional libraries for routing, as well as certain client-side functionality.</p></li>
+<li><p><strong>MUI:</strong> is a massive library of UI components designers and developers can use to build React applications. The open-source project follows Google’s guidelines for creating components, giving you a customizable library of foundational and advanced UI elements. The template used is stored by DEUSTO.</p></li>
+</ol>
+</section>
+<section id="react-components">
+<h2>React components<a class="headerlink" href="#react-components" title="Link to this heading"></a></h2>
+<p>Class based components are not recommended since React 16. The following are different ways to create function based components:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">ReactExampleComponent</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="p">{</span><span class="nx">text</span><span class="p">}</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">ReactExampleComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// if you want to put logic here</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="p">{</span><span class="nx">text</span><span class="p">}</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">ReactExampleComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="p">{</span><span class="nx">text</span><span class="p">}</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="how-to-add-a-new-element">
+<h2>How to add a new element<a class="headerlink" href="#how-to-add-a-new-element" title="Link to this heading"></a></h2>
+<p>Given the previous component, we could add a MUI button adding:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Button</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@mui/material&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">ReactExampleComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">handleClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// do something</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+<span class="w">          </span><span class="o">&lt;</span><span class="nx">Button</span>
+<span class="w">            </span><span class="nx">size</span><span class="o">=</span><span class="s1">&#39;small&#39;</span>
+<span class="w">            </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">handleClick</span><span class="p">}</span>
+<span class="w">          </span><span class="o">&gt;</span>
+<span class="w">            </span><span class="nx">Text</span><span class="w"> </span><span class="nx">inside</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">button</span>
+<span class="w">          </span><span class="o">&lt;</span><span class="err">/Button&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Checkout the MUI components:
+https://mui.com/material-ui/</p>
+</section>
+<section id="how-to-add-a-new-route">
+<h2>How to add a new route<a class="headerlink" href="#how-to-add-a-new-route" title="Link to this heading"></a></h2>
+<p>React Router DOM is an npm package that enables you to implement dynamic routing in a web app. It allows you to display pages and allow users to navigate them. It is a fully-featured client and server-side routing library for React.</p>
+<p>Routes are stored in https://github.com/interlink-project/frontend/tree/master/react/src/routes</p>
+<p>To add the route coproductionprocesses/:processId/mynewsection would be something like:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ReactExampleComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Loadable</span><span class="p">(</span><span class="nx">lazy</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">&#39;../components/ReactExampleComponent&#39;</span><span class="p">)));</span>
+<span class="p">...</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">routes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;dashboard&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">element</span><span class="o">:</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">DashboardLayout</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="nx">children</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;coproductionprocesses/:processId&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">children</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">element</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">AuthGuard</span><span class="o">&gt;&lt;</span><span class="nx">CoproductionProcessProfile</span><span class="w"> </span><span class="o">/&gt;&lt;</span><span class="err">/AuthGuard&gt;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;mynewsection&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">element</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">ReactExampleComponent</span><span class="o">&gt;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">...</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">...</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+<p>Now, the route is accessible through the specified URI. Instead, we want the users to be able to get to the route by clicking on some element in the graphical interface, for example, a button or a sidebar entry.</p>
+</section>
+<section id="how-to-add-a-new-element-in-the-sidebar">
+<h2>How to add a new element in the sidebar<a class="headerlink" href="#how-to-add-a-new-element-in-the-sidebar" title="Link to this heading"></a></h2>
+<p>At the end of the day, the sidebar is a react component. At the time of writing, the sidebar code is at https://github.com/interlink-project/frontend/blob/master/react/src/components/navsidebars/ProcessSidebar.js.</p>
+<p>The only thing you have to do is to add a new element in the <em>sections</em> variable:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">sections</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">items</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="p">(</span><span class="s1">&#39;Overview&#39;</span><span class="p">),</span>
+<span class="w">          </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="sb">`/dashboard/coproductionprocesses/</span><span class="si">${</span><span class="nx">processId</span><span class="si">}</span><span class="sb">/overview`</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Dashboard</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">disabled</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="p">(</span><span class="s1">&#39;My new section&#39;</span><span class="p">),</span>
+<span class="w">          </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="sb">`/dashboard/coproductionprocesses/</span><span class="si">${</span><span class="nx">processId</span><span class="si">}</span><span class="sb">/mynewsection`</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Dashboard</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">disabled</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">];</span>
+</pre></div>
+</div>
+</section>
+<section id="file-structure">
+<h2>File structure<a class="headerlink" href="#file-structure" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
+├── Dockerfile                # file for generating the docker image based on the nginx official image
+├── entrypoint.sh             # shell script to execute on container start
+├── i18next-parser.config.js  # configuration of the translation files parser
+├── jsconfig.json
+├── nginx.conf                # configuration of nginx
+├── node_modules              # javascript dependencies for the app
+├── package-lock.json       
+├── package.json              # dependencies and metadata of the application
+├── public                    # public static files (not dynamic: css, images, favicon, main index.html used where react is imported...)
+│   ├── _redirects
+│   ├── index.html
+│   └── static
+└── src                       # files of the react app
+    ├── App.js                # has the root component of the react app because every view and component are handled with hierarchy in React, where &lt;App /&gt; is the top most component in the hierarchy. This gives you the feel that you maintain hierarchy in your code starting from App.js.Other than that, you can have the App logic in the index.js file itself. But it&#39;s something related to conventions followed by the community using the library or framework. It always feels good to go along the community.
+    ├── __api__               # calls to the API (coproduction / catalogue services)
+    ├── axiosInstance.js      # axios (http library) customized object
+    ├── components            # components of the application
+    ├── configuration.js      # some environment variables
+    ├── constants.js          # some constants
+    ├── contexts
+    ├── hooks
+    ├── icons                 # some svg icons
+    ├── index.js              # is the traditional and actual entry point for all node apps. Here in React it just has code of what to render and where to render.
+    ├── pages                 # at the end of the day, they are components, but those ones used by the routes
+    ├── routes                # specification of the routes of the application
+    ├── slices
+    ├── store
+    ├── theme                 # variables of the theme of the app
+    ├── translations          # translation files and i18n object
+    └── utils                 # some generic utils
+</pre></div>
+</div>
+</section>
+<section id="translations">
+<h2>Translations<a class="headerlink" href="#translations" title="Link to this heading"></a></h2>
+<p>react-i18next is a powerful internationalization framework for React / React Native which is based on i18next. The module provides multiple components eg. to assert that needed translations get loaded or that your content gets rendered when the language changes.</p>
+<p>You should read the i18next documentation. The configuration options and translation functionalities like plurals, formatting, interpolation, … are documented there.
+https://react.i18next.com/guides/quick-start</p>
+<p>The i18n.js file (https://github.com/interlink-project/frontend/blob/master/react/src/translations/i18n.js) initializes the i18n object with some custom settings, such as allowed languages and the fallback language, in case of a key not having a translation for a given language.</p>
+<p>There is a generic hook (provided by the module) to access the function to translate the strings.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useTranslation</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-i18next&#39;</span><span class="p">;</span>
+<span class="p">...</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">Example</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useTranslation</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;&gt;</span>
+<span class="w">    </span><span class="p">{</span><span class="nx">t</span><span class="p">(</span><span class="s2">&quot;Hi, this is a translatable string&quot;</span><span class="p">)}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">Home</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Instead, two custom hooks have been created for the project (both of them specified in https://github.com/interlink-project/frontend/blob/master/react/src/hooks/useDependantTranslation.js):</p>
+<ul class="simple">
+<li><p>useDependantTranslation: gets the language of the process in the global state (will be explained later)</p></li>
+<li><p>useCustomTranslation: accepts a language code as a parameter.</p></li>
+</ul>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">useDependantTranslation</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useCustomTranslation</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;hooks/useDependantTranslation&#39;</span><span class="p">;</span>
+
+<span class="p">...</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">Example</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">custom_t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useCustomTranslation</span><span class="p">(</span><span class="s1">&#39;es&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">process_t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useDependantTranslation</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;&gt;</span>
+<span class="w">    </span><span class="p">{</span><span class="nx">custom_t</span><span class="p">(</span><span class="s2">&quot;Hi&quot;</span><span class="p">)}</span><span class="w"> </span><span class="c">&lt;!--</span><span class="w"> </span><span class="nx">returns</span><span class="w"> </span><span class="s2">&quot;Hola&quot;</span><span class="o">--&gt;</span>
+<span class="w">    </span><span class="p">{</span><span class="nx">process_t</span><span class="p">(</span><span class="s2">&quot;Hi&quot;</span><span class="p">)}</span><span class="w"> </span><span class="c">&lt;!--</span><span class="w"> </span><span class="nx">returns</span><span class="w"> </span><span class="s2">&quot;Ciao&quot;</span><span class="o">--&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">Home</span><span class="p">;</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>IMPORTANT: For the sake of clarity, the variable names custom_t and process_t have been used, but in order for the parser, as will now be seen, to find the keys, the variable must be named “t”.</p>
+</div></blockquote>
+<p>When new translatable strings are added into the javascript files, the translation files may be updated. For that, we can use the i18n parser, which scans the files to find new translatable elements, by executing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># from /react directory, where the package.json file is located</span>
+npm<span class="w"> </span>run<span class="w"> </span>translations
+</pre></div>
+</div>
+<p>Then, you can modify the translated strings by modifying the value in the JSON file. The translation files are located in https://github.com/interlink-project/frontend/blob/master/react/src/translations:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;Cancel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cancelar&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;external-resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Recurso externo&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nombre&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Created&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Creado&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Updated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Actualizado&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Interlinker&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INTERLINKER&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Acciones&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;No resources yet&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;No existen recursos aún&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;(it will be not related to project but it is useful for features exploration)&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;(no estará relacionado con el proyecto pero es útil para la exploración de características)&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="err">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="api-calls">
+<h2>API calls<a class="headerlink" href="#api-calls" title="Link to this heading"></a></h2>
+<p>For reasons of cleanliness, the API calls are located in the https://github.com/interlink-project/frontend/tree/master/react/src/__api__ folder.</p>
+<p>The general.js file defines the class from which the other classes will inherit. It defines the basic HTTP calls (GET - retrieve / list, POST - create, PUT - update, DELETE - remove).</p>
+<p>There is a class for each entity of the data model (following the REST philosophy) that inherit from the generic class. For example, the API endpoints related with the interlinker entity are served from http://localhost/catalogue/api/v1/interlinkers</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nx">axiosInstance</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;axiosInstance&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">GeneralApi</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">removeEmpty</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../general&#39;</span><span class="p">;</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">InterlinkersApi</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">GeneralApi</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// set the main path of the API in the constructor. </span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="s1">&#39;catalogue/api/v1/interlinkers&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// set specific methods for this entity</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">getRelated</span><span class="p">(</span><span class="nx">page</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axiosInstance</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span>
+<span class="w">      </span><span class="sb">`/</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">/related`</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">params</span><span class="o">:</span><span class="w"> </span><span class="nx">removeEmpty</span><span class="p">({</span>
+<span class="w">          </span><span class="nx">page</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">size</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;get related interlinkers call&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">interlinkersApi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">InterlinkersApi</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="state-management">
+<h2>State management<a class="headerlink" href="#state-management" title="Link to this heading"></a></h2>
+<p>There are multiple state management concerns in react.</p>
+<section id="props">
+<h3>Props<a class="headerlink" href="#props" title="Link to this heading"></a></h3>
+<p>Props are read-only</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">PropsExample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">counter</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="nx">counter</span><span class="p">}</span><span class="w"> </span><span class="nx">times</span><span class="w"> </span><span class="nx">clicked</span><span class="w"> </span><span class="o">&lt;</span><span class="err">/p&gt;;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="component-level-state">
+<h3>Component level state<a class="headerlink" href="#component-level-state" title="Link to this heading"></a></h3>
+<p>The key difference between props and state is that state is internal and controlled by the component itself while props are external and controlled by whatever renders the component. State can be changed (Mutable), whereas Props can’t (Immutable)</p>
+<p>Functional components should use “useState” react hook to create and manage their states.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">ReactExampleComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">counter</span><span class="p">,</span><span class="w"> </span><span class="nx">setCounter</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="p">{</span><span class="nx">counter</span><span class="p">}</span><span class="w"> </span><span class="nx">times</span><span class="w"> </span><span class="nx">clicked</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Combined with props:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">PropsExampleButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">clickCount</span><span class="p">,</span><span class="w"> </span><span class="nx">onClick</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Button</span>
+<span class="w">            </span><span class="nx">size</span><span class="o">=</span><span class="s1">&#39;small&#39;</span>
+<span class="w">            </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onClick</span><span class="p">}</span>
+<span class="w">          </span><span class="o">&gt;</span>
+<span class="w">            </span><span class="nx">This</span><span class="w"> </span><span class="nx">button</span><span class="w"> </span><span class="nx">has</span><span class="w"> </span><span class="nx">been</span><span class="w"> </span><span class="nx">clicked</span><span class="w"> </span><span class="p">{</span><span class="nx">clickCount</span><span class="p">}</span>
+<span class="w">          </span><span class="o">&lt;</span><span class="err">/Button&gt;;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">PropsExample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">clickCount</span><span class="p">,</span><span class="w"> </span><span class="nx">setClickCount</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">setClickCount</span><span class="p">(</span><span class="nx">clickCount</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">PropsExampleButton</span><span class="w"> </span><span class="nx">clickCount</span><span class="o">=</span><span class="p">{</span><span class="nx">clickCount</span><span class="p">}</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onClick</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="global-state">
+<h3>Global state<a class="headerlink" href="#global-state" title="Link to this heading"></a></h3>
+<p>There are plenty of third party libraries aiming to provide a single place to store our state, but when we are talking about React, Redux is the king in that regard.</p>
+<p>With the release of context API in React 16.3 and especially hooks in React 16.8, a new world of possibilites suddenly arose.
+React context suffers from a common problem: useContext hook will re-render whenever your context is modified. In other words, every component subscribed to our global state will re-render upon a context change, which in some scenarios might lead to performance issues.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">AuthProvider</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./contexts/CookieContext&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">SettingsProvider</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./contexts/SettingsContext&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">store</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./store&#39;</span><span class="p">;</span>
+
+<span class="p">...</span>
+
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">StrictMode</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">ReduxProvider</span><span class="w"> </span><span class="nx">store</span><span class="o">=</span><span class="p">{</span><span class="nx">store</span><span class="p">}</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">SettingsProvider</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">AuthProvider</span><span class="o">&gt;</span>
+<span class="w">          </span><span class="o">&lt;</span><span class="nx">App</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/AuthProvider&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="err">/SettingsProvider&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/ReduxProvider&gt;</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="err">/StrictMode&gt;, document.getElementById(&#39;root&#39;)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>In https://github.com/interlink-project/frontend/blob/master/react/src/index.js</p>
+<p>Context provides a way to pass data through the component tree without having to pass props down manually at every level, more info about it in this link</p>
+<p>This is great! We can make data accessible to many different components regardless its level in the tree, that is to say, we can subscribe components to a “global” data store. Just wrap your app within a context provider and feed that provider with the data you want to make global:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createContext</span><span class="p">,</span><span class="w"> </span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createCustomTheme</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;theme&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">THEMES</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../constants&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getLanguage</span><span class="p">,</span><span class="w"> </span><span class="nx">setLanguage</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../translations/i18n&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">initialSettings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
+
+<span class="p">};</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">restoreSettings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">};</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">storeSettings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">settings</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb">window</span><span class="p">.</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">&#39;settings&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">settings</span><span class="p">));</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">SettingsContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createContext</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">settings</span><span class="o">:</span><span class="w"> </span><span class="nx">initialSettings</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">saveSettings</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">settings</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">},</span>
+<span class="p">});</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">SettingsProvider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">props</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">children</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">props</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">settings</span><span class="p">,</span><span class="w"> </span><span class="nx">setSettings</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="nx">initialSettings</span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">saveSettings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">updatedSettings</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">SettingsContext</span><span class="p">.</span><span class="nx">Provider</span>
+<span class="w">      </span><span class="nx">value</span><span class="o">=</span><span class="p">{{</span>
+<span class="w">        </span><span class="nx">settings</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">saveSettings</span><span class="p">,</span>
+<span class="w">      </span><span class="p">}}</span>
+<span class="w">    </span><span class="o">&gt;</span>
+<span class="w">      </span><span class="p">{</span><span class="nx">children</span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/SettingsContext.Provider&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">SettingsProvider</span><span class="p">.</span><span class="nx">propTypes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">children</span><span class="o">:</span><span class="w"> </span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">node</span><span class="p">.</span><span class="nx">isRequired</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">SettingsConsumer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">SettingsContext</span><span class="p">.</span><span class="nx">Consumer</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">SettingsContext</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>https://github.com/interlink-project/frontend/blob/master/react/src/contexts/SettingsContext.js</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useContext</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">SettingsContext</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../contexts/SettingsContext&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">useSettings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">useContext</span><span class="p">(</span><span class="nx">SettingsContext</span><span class="p">);</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">useSettings</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>https://github.com/interlink-project/frontend/blob/master/react/src/hooks/useSettings.js</p>
+<p>Example component accessing global state managed by the SettingsContext</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nx">useSettings</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../../hooks/useSettings&#39;</span><span class="p">;</span>
+
+<span class="p">...</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">SettingsPage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">settings</span><span class="p">,</span><span class="w"> </span><span class="nx">saveSettings</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useSettings</span><span class="p">();</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>https://github.com/interlink-project/frontend/blob/master/react/src/components/navsidebars/SettingsPopover.js</p>
+</section>
+<section id="state-managed-by-redux">
+<h3>State managed by Redux<a class="headerlink" href="#state-managed-by-redux" title="Link to this heading"></a></h3>
+<p>#TODO</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Collaborative environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="authentication/index.html" class="btn btn-neutral float-right" title="Authentication" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Interlink team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

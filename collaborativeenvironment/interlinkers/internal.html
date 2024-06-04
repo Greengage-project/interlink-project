@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internal interlinkers &mdash; Interlink  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="External interlinkers" href="external.html" />
+    <link rel="prev" title="Interlinkers" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Interlink
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../environments/index.html">Environments</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Collaborative environment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../frontend.html">Frontend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication/index.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datamodel/index.html">Data model</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Interlinkers</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Internal interlinkers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#endpoints-needed-for-software-interlinkers-integration">Endpoints needed for SOFTWARE INTERLINKERS integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-flow-with-googledrive-interlinker">Example flow with Googledrive interlinker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="external.html">External interlinkers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add_interlinker.html">Instructions to create new Interlinkers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../internationalization.html">Translation files manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/acceptance-tests/index.html">User Acceptance testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_problems.html">Errors</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Interlink</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Collaborative environment</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Interlinkers</a></li>
+      <li class="breadcrumb-item active">Internal interlinkers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/collaborativeenvironment/interlinkers/internal.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="internal-interlinkers">
+<h1>Internal interlinkers<a class="headerlink" href="#internal-interlinkers" title="Link to this heading"></a></h1>
+<p>This project is intended to sum up the different interlinkers developed for the project. But, ¿what is an interlinker?</p>
+<p>An <em>interlinker</em> is a tool that is used to create assets by <em>instantiating</em> them. These interlinkers can be classified by its <em>nature</em>: <strong>software</strong> or <strong>knowledge</strong>.</p>
+<ul>
+<li><p><strong>Software interlinkers</strong>:</p>
+<p>Are software based interlinkers that create assets. For example, <strong>forum</strong> interlinker can be instantiated to create a forum where users can create channels and send messages. This “forum instance” is called an “asset”.</p>
+</li>
+<li><p><strong>Knowledge interlinkers</strong>:</p>
+<p>Refer to assets made by users that can be used as templates. For example, an user can create a google drive word document using <strong>googledrive</strong> interlinker and add some text to it. Now, this document could be reused, as if it was a template.</p>
+<p>A knowledge interlinker points to the software interlinker used to create an asset (softwareinterlinker_id) and the id of the specific asset that should be treated as the template (genesis_asset_id).</p>
+<p><img alt="Interlinkers models" src="../../_images/model.png" /></p>
+<p>This allows us to create knowledge interlinkers based on any software interlinker (with some conditions, as it is going to be explained later):</p>
+<ul class="simple">
+<li><p>Survey: create survey templates for specific aspects that users could reuse (such us “Survey for interlinker quality assurance”)</p></li>
+<li><p>Googledrive: (google apps) create document, slides or sheet templates</p></li>
+<li><p>Etherpad: create document templates</p></li>
+</ul>
+<p>…</p>
+</li>
+</ul>
+<section id="endpoints-needed-for-software-interlinkers-integration">
+<h2>Endpoints needed for SOFTWARE INTERLINKERS integration<a class="headerlink" href="#endpoints-needed-for-software-interlinkers-integration" title="Link to this heading"></a></h2>
+<p>Each interlinker is treated as an independent component, so they can be developed with any framework or tool (MEAN, MERN, django, NextJS… the possibilities are infinite). But they all need to expose these endpoints to integrate them:</p>
+<ol class="arabic">
+<li><p><strong>Instantiate assets:</strong></p>
+<ul>
+<li><p><strong>WHAT:</strong> basic GUI por asset instantiation. This is gonna be iframed.</p></li>
+<li><p><strong>Method:</strong> GET</p></li>
+<li><p><strong>URL:</strong> /assets/instantiate</p></li>
+<li><p>Messages for the main frontend integration:</p>
+<ul class="simple">
+<li><p>When initialized, send a message to the parent like { ‘code’: ‘initialized’, }</p></li>
+<li><p>When asset created, send a message to the parent like { ‘code’: ‘asset_created’, ‘message’: data of the asset }</p></li>
+</ul>
+</li>
+<li><p>Examples:</p>
+<ul class="simple">
+<li><p>googledrive interlinker (left): file input</p></li>
+<li><p>survey interlinker (right): form name and description</p></li>
+</ul>
+<p><img alt="Google Drive instantiate" src="../../_images/instantiators.png" /></p>
+<ul class="simple">
+<li><p>etherpad: text input for specifying a name</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Data of given asset:</strong></p>
+<ul class="simple">
+<li><p><strong>WHAT:</strong> returns data for given asset.</p></li>
+<li><p><strong>Method:</strong> GET</p></li>
+<li><p><strong>URL:</strong> /assets/{id}</p></li>
+</ul>
+<p>It must return these values</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+  <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+  <span class="s2">&quot;updated_at&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+  <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="n">optional</span> <span class="n">string</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Viewer for given asset:</strong></p>
+<ul>
+<li><p><strong>WHAT:</strong> shows GUI for given asset.</p></li>
+<li><p><strong>Method:</strong> GET</p></li>
+<li><p><strong>URL:</strong> /assets/{id}/view</p></li>
+<li><p>Examples:</p>
+<ul class="simple">
+<li><p>googledrive interlinker (left): redirects to Google Drive</p></li>
+<li><p>survey (right): renders HTML</p></li>
+</ul>
+<p><img alt="Asset data" src="../../_images/viewers.png" /></p>
+<ul class="simple">
+<li><p>etherpad: renders an iframe that shows etherpad GUI running in a diferent location (such as /etherpad/p/{padID})</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Delete existing asset:</strong></p>
+<ul class="simple">
+<li><p><strong>WHAT:</strong> deletes assets by id</p></li>
+<li><p><strong>Method:</strong> DELETE</p></li>
+<li><p><strong>URL:</strong> /assets/{id}</p></li>
+</ul>
+</li>
+<li><p><strong>[OPTIONAL] Editor for given asset:</strong></p>
+<ul>
+<li><p><strong>WHAT:</strong> shows GUI for editing some asset.</p></li>
+<li><p><strong>Method:</strong> GET</p></li>
+<li><p><strong>URL:</strong> /assets/{id}/edit</p></li>
+<li><p>Examples:</p>
+<ul class="simple">
+<li><p>googledrive interlinker: not necessary</p></li>
+<li><p>etherpad: not necessary</p></li>
+<li><p>survey: renders a GUI for modifying the survey</p></li>
+</ul>
+<p><img alt="Asset data" src="../../_images/editor.png" /></p>
+</li>
+</ul>
+</li>
+<li><p><strong>[OPTIONAL] Clone given asset:</strong></p>
+<ul class="simple">
+<li><p><strong>WHAT:</strong> clones asset given an id.</p></li>
+<li><p><strong>Method:</strong> POST</p></li>
+<li><p><strong>URL:</strong> /assets/{id}/clone</p></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<div><p>:warning: If /clone not specified, the interlinker can not be used to generate knowledge interlinkers.</p>
+</div></blockquote>
+<p>Furthermore, interlinkers can implement any other endpoints needed for its functionality. For example, Googledrive (left) and survey (right) interlinker implements:</p>
+<p><img alt="APIS" src="../../_images/APIS.png" /></p>
+<section id="in-conclusion">
+<h3>In conclusion:<a class="headerlink" href="#in-conclusion" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span>                           <span class="n">GET</span>       <span class="n">redirects</span> <span class="n">to</span> <span class="n">swagger</span> <span class="o">/</span> <span class="n">redoc</span> <span class="n">DOCS</span> <span class="p">(</span><span class="n">maybe</span> <span class="ow">not</span> <span class="n">possible</span><span class="p">)</span>
+<span class="o">/</span><span class="n">assets</span><span class="o">/</span><span class="n">instantiate</span>         <span class="n">GET</span>       <span class="n">GUI</span> <span class="k">for</span> <span class="n">asset</span> <span class="n">creation</span>
+<span class="o">/</span><span class="n">assets</span><span class="o">/</span><span class="p">{</span><span class="n">ASSET_ID</span><span class="p">}</span>          <span class="n">GET</span>       <span class="n">JSON</span> <span class="n">data</span> <span class="n">of</span> <span class="n">asset</span>
+<span class="o">/</span><span class="n">assets</span><span class="o">/</span><span class="p">{</span><span class="n">ASSET_ID</span><span class="p">}</span>          <span class="n">POST</span>      <span class="p">[</span><span class="n">OPTIONAL</span><span class="p">]</span> <span class="n">Posts</span> <span class="n">data</span> <span class="k">for</span> <span class="n">asset</span> <span class="n">creation</span> <span class="ow">and</span> <span class="k">return</span> <span class="n">JSON</span> <span class="n">of</span> <span class="n">asset</span>
+<span class="o">/</span><span class="n">assets</span><span class="o">/</span><span class="p">{</span><span class="n">ASSET_ID</span><span class="p">}</span><span class="o">/</span><span class="n">view</span>     <span class="n">GET</span>       <span class="n">GUI</span> <span class="k">for</span> <span class="n">the</span> <span class="n">interaction</span> <span class="k">with</span> <span class="n">the</span> <span class="n">asset</span>
+<span class="o">/</span><span class="n">assets</span><span class="o">/</span><span class="p">{</span><span class="n">ASSET_ID</span><span class="p">}</span>          <span class="n">DELETE</span>    <span class="n">Deletes</span> <span class="n">asset</span> <span class="ow">and</span> <span class="n">returns</span> <span class="n">No</span> <span class="n">content</span>
+<span class="o">/</span><span class="n">assets</span><span class="o">/</span><span class="p">{</span><span class="n">ASSET_ID</span><span class="p">}</span><span class="o">/</span><span class="n">edit</span>     <span class="n">GET</span>       <span class="p">[</span><span class="n">OPTIONAL</span><span class="p">]</span> <span class="n">GUI</span> <span class="k">for</span> <span class="n">asset</span> <span class="n">editing</span>
+<span class="o">/</span><span class="n">assets</span><span class="o">/</span><span class="p">{</span><span class="n">ASSET_ID</span><span class="p">}</span><span class="o">/</span><span class="n">clone</span>    <span class="n">POST</span>      <span class="p">[</span><span class="n">OPTIONAL</span><span class="p">]</span> <span class="n">Clones</span> <span class="n">the</span> <span class="n">asset</span> <span class="ow">and</span> <span class="n">returns</span> <span class="n">JSON</span> <span class="n">data</span>
+
+<span class="o">...</span> <span class="n">custom</span> <span class="n">endpoints</span> <span class="n">needed</span> <span class="k">for</span> <span class="n">its</span> <span class="n">own</span> <span class="n">logic</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="example-flow-with-googledrive-interlinker">
+<h2>Example flow with Googledrive interlinker<a class="headerlink" href="#example-flow-with-googledrive-interlinker" title="Link to this heading"></a></h2>
+<p>VIDEO: https://youtu.be/N3jB3lwOsRo</p>
+<p>When the user selects a file, a POST request to /api/v1/assets <strong>OF THE INTERLINKER</strong> (in this case /googledrive/api/v1/assets) is made with the data needed for the asset instantiation (in this case, the file). When response received, a message to the parent is sent with the asset data:</p>
+<p><img alt="Googledrive instantiator code" src="../../_images/code.png" /></p>
+<p>When the <strong>Collaborative Environment frontend</strong> receives the message, makes a POST request to /coproduction/api/v1/assets/ to store that asset for the task where the user has pressed “Add asset” button.</p>
+<p><img alt="Collaborative environment message listener" src="../../_images/frontend.png" /></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Interlinkers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="external.html" class="btn btn-neutral float-right" title="External interlinkers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Interlink team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
