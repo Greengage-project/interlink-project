@@ -36,6 +36,8 @@ setup: ## Clones all components
 	
 	# gamification
 	cd .. && git clone https://github.com/greengage-project/interlink-gamification
+	cd .. && git clone https://github.com/fvergaracl/GAME
+
 .PHONY: down
 down: ## Stops all containers and removes volumes
 	# platform components
@@ -54,7 +56,8 @@ down: ## Stops all containers and removes volumes
 
 	# gamification
 	cd ../interlink-gamification && make down
-	
+	cd ../GAME && make down
+
 	cd ./envs/local && docker-compose down --remove-orphans
 	docker network rm traefik-public || true
 
@@ -77,6 +80,7 @@ start: down net ## Run containers (restarts them if already running)
 
 	# gamification
 	cd ../interlink-gamification && make integrated
+	cd ../GAME && make integrated
 
 	# Most of the times we only want to restart backend components because frontend lasts a lot to start in dev mode
 	cd ../frontend && make integrated
@@ -96,6 +100,7 @@ pull: down ## Pulls all components
 
 	# gamification
 	cd ../interlink-gamification && git pull
+	cd ../GAME && git pull
 
 	# Most of the times we only want to restart backend components because frontend lasts a lot to start in dev mode
 	cd ../frontend && git pull
@@ -116,6 +121,7 @@ build: ## Build containers
 
 	# gamification
 	cd ../interlink-gamification && make build
+	cd ../GAME && make build
 
 	cd ../frontend && make build
 
@@ -144,6 +150,7 @@ restartcontainers: ## Run containers (restarts them if already running)
 	cd ../interlinker-ceditor && make integrated
 
 	cd ../interlink-gamification && make integrated
+	cd ../GAME && make integrated
 
 	# Most of the times we only want to restart backend components because frontend lasts a lot to start in dev mode
 	# cd ../frontend && make integrated
